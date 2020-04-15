@@ -1,43 +1,65 @@
 'use strict';
 
-// Content script file will run in the context of web page.
-// With content script you can manipulate the web pages using
-// Document Object Model (DOM).
-// You can also pass information to the parent extension.
+window.onload = () => {
+  let media
+  const interval = window.setInterval(() => {
+    media = document.getElementsByTagName('video')[0]
+    if(media) {
+      window.clearInterval(interval)
+    }
+  }, 250)
 
-// We execute this script by making an entry in manifest.json file
-// under `content_scripts` property
+  const moveSec = 10
 
-// For more information on Content Scripts,
-// See https://developer.chrome.com/extensions/content_scripts
-
-// Log `title` of current active web page
-const pageTitle = document.head.getElementsByTagName('title')[0].innerHTML;
-console.log(
-  `Page title is: '${pageTitle}' - evaluated by Chrome extension's 'contentScript.js' file`
-);
-
-// Communicate with background file by sending a message
-chrome.runtime.sendMessage(
-  {
-    type: 'GREETINGS',
-    payload: {
-      message: 'Hello, my name is Con. I am from ContentScript.',
-    },
-  },
-  response => {
-    console.log(response.message);
-  }
-);
-
-// Listen for message
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  if (request.type === 'COUNT') {
-    console.log(`Current count is ${request.payload.count}`);
+  const playStop = () => {
+    if(media.paused) {
+      media.play()
+    }else{
+      media.pause()
+    }
   }
 
-  // Send an empty response
-  // See https://github.com/mozilla/webextension-polyfill/issues/130#issuecomment-531531890
-  sendResponse({});
-  return true;
-});
+  const moveForward = () => {
+    const curTime = media.currentTime
+    media.currentTime = curTime + moveSec
+  }
+
+  const moveBackward = () => {
+    const curTime = media.currentTime
+    media.currentTime = curTime - moveSec
+  }
+
+  const toggleFullScreen = () => {
+    document.getElementsByClassName("vjs-fullscreen-control")[0].click()
+  }
+
+  const toggleMute = () => {
+    document.getElementsByClassName("vjs-mute-control")[0].click()
+  }
+
+  document.onkeyup = e => {
+    if(media) {
+      switch(e.key) {
+        case 'k':
+          playStop()
+          break
+        case ' ':
+          playStop()
+          break
+        case 'j':
+          moveBackward()
+          break
+        case 'l':
+          moveForward()
+          break
+        case 'f':
+          toggleFullScreen()
+          break
+        case 'm':
+          toggleMute()
+          break
+      }
+    }
+    // console.log(e)
+  }
+}
