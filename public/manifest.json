@@ -9,16 +9,6 @@
     "48": "icons/icon_48.png",
     "128": "icons/icon_128.png"
   },
-  "background": {
-    "scripts": [
-      "background.js"
-    ],
-    "persistent": false
-  },
-  "browser_action": {
-    "default_title": "Microsoft Stream-shortcuts",
-    "default_popup": "popup.html"
-  },
   "permissions": [
     "storage"
   ],
