@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Microsoft Stream-shortcuts",
-  "version": "0.1.0",
-  "description": "My Chrome Extension",
+  "name": "Microsoft Stream Shortcuts",
+  "version": "1.0",
+  "description": "Add some Youtube-like shortcuts to Microsoft Stream",
   "icons": {
     "16": "icons/icon_16.png",
     "32": "icons/icon_32.png",
@@ -10,9 +10,6 @@
     "64": "icons/icon_64.png",
     "128": "icons/icon_128.png"
   },
-  "permissions": [
-    "storage"
-  ],
   "content_scripts": [
     {
       "matches": [
