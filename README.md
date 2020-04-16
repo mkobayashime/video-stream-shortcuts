@@ -1,17 +1,38 @@
-# <img src="public/icons/icon_48.png" width="45" align="left"> Microsoft Stream Shortcuts
+# Microsoft Stream Shortcuts
 
-My Chrome Extension
+[![Version](https://img.shields.io/badge/Version-1.0-blue.svg?style=for-the-badge)](https://chrome.google.com/webstore/detail/microsoft-stream-shortcut/jkclfjpmbcenbmmheenahiglgkefekim/related?utm_source=chrome-ntp-icon&hl=en)
+[![MIT License](https://img.shields.io/github/license/mkobayashime/SwitchTweetdeckAccount.svg?style=for-the-badge)](https://github.com/mkobayashime/SwitchTweetdeckAccount/blob/master/LICENSE)
 
-## Features
+Add some Youtube-like shortcuts to Microsoft Stream
 
-- Feature 1
-- Feature 2
+You can get it via [Chrome Web Store](https://chrome.google.com/webstore/detail/microsoft-stream-shortcut/jkclfjpmbcenbmmheenahiglgkefekim/related?utm_source=chrome-ntp-icon&hl=en)
 
-## Install
+Built on top of awesome [chrome-extension-cli](https://github.com/dutiyesh/chrome-extension-cli)
 
-[**Chrome** extension]() <!-- TODO: Add chrome extension link inside parenthesis -->
+![thumbnail](./thumbnails/1.png)
+
+## Available shortcuts
+
+- **k** - Pause/Resume the video
+- **j** - Move 10 seconds backward
+- **l** - Move 10 seconds forward
+- **f** - Enable/Disable fullscreen
+- **m** - Mute/Unmute
 
 ## Contribution
 
-Suggestions and pull requests are welcomed!.
+Suggestions and pull requests are all welcomed!
 
+## License
+
+[![MIT License](https://img.shields.io/github/license/mkobayashime/SwitchTweetdeckAccount.svg?style=for-the-badge)](https://github.com/mkobayashime/microsoft-stream-shortcuts/blob/master/LICENSE)
+
+[The MIT License (MIT)](https://opensource.org/licenses/mit-license.php)
+
+Copyright (c) 2015 Michael Villar
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
