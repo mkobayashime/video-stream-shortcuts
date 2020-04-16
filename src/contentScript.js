@@ -11,7 +11,7 @@ window.onload = () => {
 
   const moveSec = 10
 
-  const playStop = () => {
+  const pauseResume = () => {
     if(media.paused) {
       media.play()
     }else{
@@ -41,10 +41,10 @@ window.onload = () => {
     if(media) {
       switch(e.key) {
         case 'k':
-          playStop()
+          pauseResume()
           break
         case ' ':
-          playStop()
+          pauseResume()
           break
         case 'j':
           moveBackward()
