@@ -1,3 +1,7 @@
+@mixin dark()
+  @media (prefers-color-scheme: dark)
+    @content
+
 @import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;600&display=swap');
 
 html
@@ -13,6 +17,9 @@ html
     font-family: "Hind"
     font-weight: 400
     color: #263238
+    @include dark()
+      background-color: #000
+      color: #cfd8dc
 
     h1
       display: flex
@@ -45,3 +52,6 @@ html
           text-align: center
           font-weight: 600
           margin-right: 0.3em
+          @include dark
+            background-color: #37474f
+            border-color: #78909c
