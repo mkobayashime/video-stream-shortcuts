@@ -1,6 +1,12 @@
 'use strict';
 
-window.onload = () => {
+chrome.runtime.onMessage.addListener((message) => {
+  if(message.type == "msStreamUpdated") {
+    onload()
+  }
+})
+
+const onload = () => {
   let media
   const interval = window.setInterval(() => {
     media = document.getElementsByTagName('video')[0]

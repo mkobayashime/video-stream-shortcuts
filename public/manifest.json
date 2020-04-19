@@ -10,6 +10,10 @@
     "64": "icons/icon_64.png",
     "128": "icons/icon_128.png"
   },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": true
+  },
   "content_scripts": [
     {
       "matches": [
@@ -19,5 +23,8 @@
         "contentScript.js"
       ]
     }
+  ],
+  "permissions": [
+    "tabs"
   ]
 }
