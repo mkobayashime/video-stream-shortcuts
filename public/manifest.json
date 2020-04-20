@@ -20,7 +20,7 @@
         "https://web.microsoftstream.com/video/*"
       ],
       "js": [
-        "contentScript.js"
+        "msStream.js"
       ]
     }
   ],
