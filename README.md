@@ -1,17 +1,22 @@
-# Microsoft Stream Shortcuts
+# Video Stream Shortcuts
 
-[![Version](https://img.shields.io/badge/Version-1.0-blue.svg?style=for-the-badge)](https://chrome.google.com/webstore/detail/microsoft-stream-shortcut/jkclfjpmbcenbmmheenahiglgkefekim/related?utm_source=chrome-ntp-icon&hl=en)
-[![MIT License](https://img.shields.io/github/license/mkobayashime/SwitchTweetdeckAccount.svg?style=for-the-badge)](https://github.com/mkobayashime/SwitchTweetdeckAccount/blob/master/LICENSE)
+[![Version](https://img.shields.io/badge/Version-2.0-blue.svg?style=for-the-badge)](https://chrome.google.com/webstore/detail/video-stream-shortcuts/jkclfjpmbcenbmmheenahiglgkefekim)
+[![MIT License](https://img.shields.io/github/license/mkobayashime/video-stream-shortcuts.svg?style=for-the-badge)](https://github.com/mkobayashime/video-stream-shortcuts/blob/master/LICENSE)
 
-Add some Youtube-like shortcuts to Microsoft Stream
+Add some Youtube-like shortcuts to video streaming services
 
-You can get it via [Chrome Web Store](https://chrome.google.com/webstore/detail/microsoft-stream-shortcut/jkclfjpmbcenbmmheenahiglgkefekim/related?utm_source=chrome-ntp-icon&hl=en)
+You can get it via [Chrome Web Store](https://chrome.google.com/webstore/detail/video-stream-shortcuts/jkclfjpmbcenbmmheenahiglgkefekim)
 
 Built on top of awesome [chrome-extension-cli](https://github.com/dutiyesh/chrome-extension-cli)
 
 ![thumbnail](./thumbnails/1.png)
 
-## Available shortcuts
+## Supported services
+
+- Prime Video
+- Microsoft Stream
+
+## Supported shortcuts
 
 - **k** - Pause/Resume the video
 - **j** - Move 10 seconds backward
@@ -25,7 +30,7 @@ Suggestions and pull requests are all welcomed!
 
 ## License
 
-[![MIT License](https://img.shields.io/github/license/mkobayashime/SwitchTweetdeckAccount.svg?style=for-the-badge)](https://github.com/mkobayashime/microsoft-stream-shortcuts/blob/master/LICENSE)
+[![MIT License](https://img.shields.io/github/license/mkobayashime/video-stream-shortcuts.svg?style=for-the-badge)](https://github.com/mkobayashime/video-stream-shortcuts/blob/master/LICENSE)
 
 [The MIT License (MIT)](https://opensource.org/licenses/mit-license.php)
 
