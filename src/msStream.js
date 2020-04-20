@@ -1,20 +1,28 @@
 'use strict';
 
-chrome.runtime.onMessage.addListener((message) => {
-  if(message.type == "msStreamUpdated") {
-    onload()
+chrome.runtime.onMessage.addListener(message => {
+  if(message.type === "msStreamUpdated") {
+    getVideo()
   }
 })
 
-const onload = () => {
-  let media
-  const interval = window.setInterval(() => {
-    media = document.getElementsByTagName('video')[0]
-    if(media) {
-      window.clearInterval(interval)
-    }
-  }, 250)
+const getVideo = () => {
+  const promise = new Promise(resolve => {
+    const interval = window.setInterval(() => {
+      const media = document.getElementsByTagName('video')[0]
+      if(media) {
+        window.clearInterval(interval)
+        resolve(media)
+      }
+    }, 250)
+  })
 
+  promise.then(media => {
+    setShortcuts(media)
+  })
+}
+
+const setShortcuts = media => {
   const moveSec = 10
 
   const pauseResume = () => {
