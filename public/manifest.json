@@ -20,7 +20,15 @@
         "https://web.microsoftstream.com/video/*"
       ],
       "js": [
-        "contentScript.js"
+        "msStream.js"
+      ]
+    },
+    {
+      "matches": [
+        "https://www.amazon.co.jp/gp/video/*"
+      ],
+      "js": [
+        "primeVideo.js"
       ]
     }
   ],
