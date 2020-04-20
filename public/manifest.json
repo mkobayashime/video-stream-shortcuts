@@ -22,6 +22,14 @@
       "js": [
         "msStream.js"
       ]
+    },
+    {
+      "matches": [
+        "https://www.amazon.co.jp/gp/video/*"
+      ],
+      "js": [
+        "primeVideo.js"
+      ]
     }
   ],
   "browser_action": {
