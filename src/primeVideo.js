@@ -64,14 +64,6 @@ const setShortcuts = media => {
     cache()
   }
 
-  const toggleFullScreen = () => {
-    document.getElementsByClassName("fullscreenButton")[0].click()
-  }
-
-  const toggleMute = () => {
-    // TODO
-  }
-
   document.onkeyup = e => {
     switch(e.key) {
       case 'k':
@@ -86,12 +78,6 @@ const setShortcuts = media => {
       case 'l':
         moveForward()
         break
-      case 'f':
-        toggleFullScreen()
-        break
-      // case 'm':
-      //   toggleMute()
-      //   break
     }
     // console.log(e)
   }
