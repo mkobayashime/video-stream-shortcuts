@@ -52,7 +52,7 @@ const setShortcuts = media => {
   }
 
   document.onkeyup = e => {
-    if(media) {
+    if(!isTyping()) {
       switch(e.key) {
         case 'k':
           pauseResume()
@@ -73,7 +73,19 @@ const setShortcuts = media => {
           toggleMute()
           break
       }
+      // console.log(e)
     }
-    // console.log(e)
+  }
+}
+
+// Return if the user is typig
+const isTyping = () => {
+  const tagName = document.activeElement.tagName
+
+  // HTML tags to be detected as typing
+  const inputTags = ["INPUT", "TEXTAREA", "SELECT"]
+
+  if(inputTags.indexOf(tagName) !== -1) {
+    return true
   }
 }
