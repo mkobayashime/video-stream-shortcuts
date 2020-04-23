@@ -1,5 +1,9 @@
 'use strict';
 
+import togglePause from '../methods/togglePause'
+import seek from '../methods/seek'
+import isTyping from '../methods/isTyping'
+
 window.onload = () => {
   const body = document.getElementsByTagName("body")[0]
   
@@ -31,54 +35,30 @@ const getVideo = () => {
 }
 
 const setShortcuts = media => {
-  const moveSec = 10
-
-  const pauseResume = () => {
-    if(media.paused) {
-      media.play()
-    }else{
-      media.pause()
-    }
-  }
-
-  // Pause or Resume once and then undo it to load the new frame
-  const cache = () => {
-    if(media.paused) {
-      media.play()
-      media.pause()
-    }else{
-      media.pause()
-      media.play()
-    }
-  }
-  
-  const moveForward = () => {
-    const curTime = media.currentTime
-    media.currentTime = curTime + moveSec
-    cache()
-  }
-  
-  const moveBackward = () => {
-    const curTime = media.currentTime
-    media.currentTime = curTime - moveSec || 0
-    cache()
-  }
-
   document.onkeyup = e => {
-    switch(e.key) {
-      case 'k':
-        pauseResume()
-        break
-      case ' ':
-        pauseResume()
-        break
-      case 'j':
-        moveBackward()
-        break
-      case 'l':
-        moveForward()
-        break
+    if(!isTyping(document)) {
+      switch(e.key) {
+        case 'k':
+          togglePause(media)
+          break
+        case ' ':
+          togglePause(media)
+          break
+        case 'j':
+          seek({
+            media: media,
+            direction: 'backward',
+            cacheRequired: true
+          })
+          break
+        case 'l':
+          seek({
+            media: media,
+            direction: 'forward',
+            cacheRequired: true
+          })
+          break
+      }
     }
-    // console.log(e)
   }
 }

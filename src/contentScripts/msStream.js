@@ -1,5 +1,11 @@
 'use strict';
 
+import togglePause from '../methods/togglePause'
+import seek from '../methods/seek'
+import toggleFullscreen from '../methods/toggleFullscreen'
+import toggleMute from '../methods/toggleMute'
+import isTyping from '../methods/isTyping'
+
 chrome.runtime.onMessage.addListener(message => {
   if(message.type === "msStreamUpdated") {
     getVideo()
@@ -23,69 +29,36 @@ const getVideo = () => {
 }
 
 const setShortcuts = media => {
-  const moveSec = 10
-
-  const pauseResume = () => {
-    if(media.paused) {
-      media.play()
-    }else{
-      media.pause()
-    }
-  }
-
-  const moveForward = () => {
-    const curTime = media.currentTime
-    media.currentTime = curTime + moveSec
-  }
-
-  const moveBackward = () => {
-    const curTime = media.currentTime
-    media.currentTime = curTime - moveSec
-  }
-
-  const toggleFullScreen = () => {
-    document.getElementsByClassName("vjs-fullscreen-control")[0].click()
-  }
-
-  const toggleMute = () => {
-    document.getElementsByClassName("vjs-mute-control")[0].click()
-  }
+  let preVolume
 
   document.onkeyup = e => {
-    if(!isTyping()) {
+    if(!isTyping(document)) {
       switch(e.key) {
         case 'k':
-          pauseResume()
+          togglePause(media)
           break
         case ' ':
-          pauseResume()
+          togglePause(media)
           break
         case 'j':
-          moveBackward()
+          seek({
+            media: media,
+            direction: 'backward'
+          })
           break
         case 'l':
-          moveForward()
+          seek({
+            media: media,
+            direction: 'forward'
+          })
           break
         case 'f':
-          toggleFullScreen()
+          toggleFullscreen(media, document)
           break
         case 'm':
-          toggleMute()
+          preVolume = toggleMute(media, preVolume)
           break
       }
-      // console.log(e)
     }
-  }
-}
-
-// Return if the user is typig
-const isTyping = () => {
-  const tagName = document.activeElement.tagName
-
-  // HTML tags to be detected as typing
-  const inputTags = ["INPUT", "TEXTAREA", "SELECT"]
-
-  if(inputTags.indexOf(tagName) !== -1) {
-    return true
   }
 }

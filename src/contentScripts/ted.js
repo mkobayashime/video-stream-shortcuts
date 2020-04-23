@@ -1,7 +1,10 @@
 'use strict';
 
+import togglePause from '../methods/togglePause'
+import seek from '../methods/seek'
 import toggleFullscreen from '../methods/toggleFullscreen'
 import toggleMute from '../methods/toggleMute'
+import isTyping from '../methods/isTyping'
 
 window.onload = () => {
   getVideo()
@@ -24,60 +27,36 @@ const getVideo = () => {
 }
 
 const setShortcuts = media => {
-  const moveSec = 10
-
-  const pauseResume = () => {
-    if(media.paused) {
-      media.play()
-    }else{
-      media.pause()
-    }
-  }
-
-  const cache = () => {
-    if(media.paused) {
-      media.play()
-      media.pause()
-    }else{
-      media.pause()
-      media.play()
-    }
-  }
-
-  const moveForward = () => {
-    const curTime = media.currentTime
-    media.currentTime = curTime + moveSec
-    cache()
-  }
-
-  const moveBackward = () => {
-    const curTime = media.currentTime
-    media.currentTime = curTime - moveSec || 0
-    cache()
-  }
-
   let preVolume
 
   document.onkeyup = e => {
-    switch(e.key) {
-      case 'k':
-        pauseResume()
-        break
-      case ' ':
-        pauseResume()
-        break
-      case 'j':
-        moveBackward()
-        break
-      case 'l':
-        moveForward()
-        break
-      case 'f':
-        toggleFullscreen(media, document)
-        break
-      case 'm':
-        preVolume = toggleMute(media, preVolume)
-        break
+    if(!isTyping(document)) {
+      switch(e.key) {
+        case 'k':
+          togglePause(media)
+          break
+        case ' ':
+          togglePause(media)
+          break
+        case 'j':
+          seek({
+            media: media,
+            direction: 'backward'
+          })
+          break
+        case 'l':
+          seek({
+            media: media,
+            direction: 'forward'
+          })
+          break
+        case 'f':
+          toggleFullscreen(media, document)
+          break
+        case 'm':
+          preVolume = toggleMute(media, preVolume)
+          break
+      }
     }
   }
 }
