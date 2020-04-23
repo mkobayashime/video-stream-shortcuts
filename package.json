@@ -5,13 +5,21 @@
   "private": true,
   "scripts": {
     "watch": "webpack --mode=development --watch --config config/webpack.config.js",
-    "build": "webpack --mode=production --config config/webpack.config.js"
+    "build": "webpack --mode=production --config config/webpack.config.js",
+    "lint": "eslint src/**/*.js",
+    "lintfix": "eslint --fix src/**/*.js"
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.5.2",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.3",
     "file-loader": "^6.0.0",
     "mini-css-extract-plugin": "^0.9.0",
+    "prettier": "^2.0.5",
     "size-plugin": "^2.0.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",

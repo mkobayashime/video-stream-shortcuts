@@ -1,9 +1,9 @@
-'use strict'
+"use strict"
 
 const toggleFullsceen = (media, document) => {
-  if(!document.fullscreenElement) {
+  if (!document.fullscreenElement) {
     media.requestFullscreen()
-  }else{
+  } else {
     document.exitFullscreen()
   }
 }

@@ -1,9 +1,9 @@
-'use strict'
+"use strict"
 
-const togglePause = media => {
-  if(media.paused) {
+const togglePause = (media) => {
+  if (media.paused) {
     media.play()
-  }else{
+  } else {
     media.pause()
   }
 }

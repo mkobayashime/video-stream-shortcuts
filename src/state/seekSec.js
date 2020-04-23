@@ -1,9 +1,9 @@
-'use strict'
+"use strict"
 
 let seekSec = 10
 
-const changeSeekSec = val => {
+const changeSeekSec = (val) => {
   seekSec = val
 }
 
-export {seekSec, changeSeekSec}
+export { seekSec, changeSeekSec }

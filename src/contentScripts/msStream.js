@@ -1,61 +1,62 @@
-'use strict';
+"use strict"
 
-import togglePause from '../methods/togglePause'
-import seek from '../methods/seek'
-import toggleFullscreen from '../methods/toggleFullscreen'
-import toggleMute from '../methods/toggleMute'
-import isTyping from '../methods/isTyping'
+import togglePause from "../methods/togglePause"
+import seek from "../methods/seek"
+import toggleFullscreen from "../methods/toggleFullscreen"
+import toggleMute from "../methods/toggleMute"
+import isTyping from "../methods/isTyping"
 
-chrome.runtime.onMessage.addListener(message => {
-  if(message.type === "msStreamUpdated") {
+// eslint-disable-next-line no-undef
+chrome.runtime.onMessage.addListener((message) => {
+  if (message.type === "msStreamUpdated") {
     getVideo()
   }
 })
 
 const getVideo = () => {
-  const promise = new Promise(resolve => {
+  const promise = new Promise((resolve) => {
     const interval = window.setInterval(() => {
-      const media = document.getElementsByTagName('video')[0]
-      if(media) {
+      const media = document.getElementsByTagName("video")[0]
+      if (media) {
         window.clearInterval(interval)
         resolve(media)
       }
     }, 250)
   })
 
-  promise.then(media => {
+  promise.then((media) => {
     setShortcuts(media)
   })
 }
 
-const setShortcuts = media => {
+const setShortcuts = (media) => {
   let preVolume
 
-  document.onkeyup = e => {
-    if(!isTyping(document)) {
-      switch(e.key) {
-        case 'k':
+  document.onkeyup = (e) => {
+    if (!isTyping(document)) {
+      switch (e.key) {
+        case "k":
           togglePause(media)
           break
-        case ' ':
+        case " ":
           togglePause(media)
           break
-        case 'j':
+        case "j":
           seek({
             media: media,
-            direction: 'backward'
+            direction: "backward",
           })
           break
-        case 'l':
+        case "l":
           seek({
             media: media,
-            direction: 'forward'
+            direction: "forward",
           })
           break
-        case 'f':
+        case "f":
           toggleFullscreen(media, document)
           break
-        case 'm':
+        case "m":
           preVolume = toggleMute(media, preVolume)
           break
       }

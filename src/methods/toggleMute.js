@@ -1,14 +1,14 @@
-'use strict'
+"use strict"
 
 const toggleMute = (media, preVolume) => {
-  if(media.volume !== 0) {
+  if (media.volume !== 0) {
     preVolume = media.volume
     media.volume = 0
     return preVolume
-  }else{
-    if(preVolume) {
+  } else {
+    if (preVolume) {
       media.volume = preVolume
-    }else{
+    } else {
       media.volume = 1
     }
     return false
