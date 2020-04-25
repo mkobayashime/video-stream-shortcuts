@@ -11,7 +11,7 @@ const seek = ({ media, direction, cacheRequired = false }) => {
     }
   } else if (direction === "backward") {
     const curTime = media.currentTime
-    media.currentTime = curTime - seekSec || 0
+    media.currentTime = curTime - seekSec > 0 ? curTime - seekSec : 0
     if (cacheRequired) {
       cache(media)
     }
