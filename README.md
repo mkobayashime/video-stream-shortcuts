@@ -24,6 +24,8 @@ Built on top of awesome [chrome-extension-cli](https://github.com/dutiyesh/chrom
 - **l** - Move 10 seconds forward
 - **f** - Enable/Disable fullscreen
 - **m** - Mute/Unmute
+- **Shift+,** / **<** - Decrease playback speed (MS Stream only)
+- **Shift+.** / **>** - Increase playback speed (MS Stream only)
 
 ## Contribution
 
