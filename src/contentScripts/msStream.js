@@ -32,6 +32,21 @@ const getVideo = () => {
 const setShortcuts = (media) => {
   let preVolume
 
+  const changePlaybackSpeed = (direction) => {
+    const curSpeed = media.playbackRate
+    if (direction === "increase") {
+      if (curSpeed !== 2) {
+        media.playbackRate = curSpeed + 0.25
+      }
+    } else if (direction === "decrease") {
+      if (curSpeed !== 0.5) {
+        media.playbackRate = curSpeed - 0.25
+      }
+    } else {
+      throw '"direction" must be either of "increase" or "decrease"'
+    }
+  }
+
   document.onkeyup = (e) => {
     if (!isTyping(document)) {
       switch (e.key) {
@@ -58,6 +73,12 @@ const setShortcuts = (media) => {
           break
         case "m":
           preVolume = toggleMute(media, preVolume)
+          break
+        case "<":
+          changePlaybackSpeed("decrease")
+          break
+        case ">":
+          changePlaybackSpeed("increase")
           break
       }
     }
