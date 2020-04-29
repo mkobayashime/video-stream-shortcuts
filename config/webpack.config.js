@@ -12,7 +12,6 @@ const config = merge(common, {
     msStream: PATHS.src + "/contentScripts/msStream.js",
     primeVideo: PATHS.src + "/contentScripts/primeVideo.js",
     ted: PATHS.src + "/contentScripts/ted.js",
-    popup: PATHS.src + "/popup.js",
   },
 })
 
