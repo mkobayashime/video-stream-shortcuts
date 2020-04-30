@@ -62,7 +62,7 @@ const setShortcuts = (media) => {
           callIndicatorCreator({ type: "seekForward" })
           break
         case "f":
-          toggleFullscreen(media, document)
+          toggleFullscreen(media.parentNode, document)
           break
         case "m":
           preVolume = toggleMute(media, preVolume)
@@ -93,8 +93,12 @@ const setShortcuts = (media) => {
 }
 
 const callIndicatorCreator = ({ type, media, text }) => {
-  const video = document.getElementsByTagName("video")[0]
-  const wrapper = video.parentNode.parentNode
+  const wrapper = document.getElementsByTagName("video")[0].parentNode
+  wrapper.style.position = "absolute"
+  wrapper.style.width = "100%"
+  wrapper.style.height = "100%"
+  wrapper.style.top = "0"
+  wrapper.style.left = "0"
 
   createIndicator({
     wrapper,
