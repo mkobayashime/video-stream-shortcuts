@@ -3,6 +3,9 @@
 import togglePause from "../methods/togglePause"
 import seek from "../methods/seek"
 import isTyping from "../methods/isTyping"
+import changePlaybackSpeed from "../methods/changePlaybackSpeed"
+import createIndicator from "../methods/createIndicator"
+import loadIndicatorCss from "../methods/loadIndicatorCss"
 
 window.onload = () => {
   const body = document.getElementsByTagName("body")[0]
@@ -10,6 +13,7 @@ window.onload = () => {
   const observer = new MutationObserver(() => {
     if (body.style.overflow === "hidden") {
       getVideo()
+      loadIndicatorCss()
     }
   })
 
@@ -40,9 +44,11 @@ const setShortcuts = (media) => {
       switch (e.key) {
         case "k":
           togglePause(media)
+          callIndicatorCreator({ type: "togglePause", media })
           break
         case " ":
           togglePause(media)
+          callIndicatorCreator({ type: "togglePause", media })
           break
         case "j":
           seek({
@@ -50,6 +56,7 @@ const setShortcuts = (media) => {
             direction: "backward",
             cacheRequired: true,
           })
+          callIndicatorCreator({ type: "seekBackward" })
           break
         case "l":
           seek({
@@ -57,8 +64,36 @@ const setShortcuts = (media) => {
             direction: "forward",
             cacheRequired: true,
           })
+          callIndicatorCreator({ type: "seekForward" })
           break
+        case "<": {
+          const curSpeed = changePlaybackSpeed(media, "decrease")
+          callIndicatorCreator({
+            type: "text",
+            text: curSpeed.toString() + "x",
+          })
+          break
+        }
+        case ">": {
+          const curSpeed = changePlaybackSpeed(media, "increase")
+          callIndicatorCreator({
+            type: "text",
+            text: curSpeed.toString() + "x",
+          })
+          break
+        }
       }
     }
   }
+}
+
+const callIndicatorCreator = ({ type, media, text }) => {
+  const wrapper = document.getElementsByClassName("overlaysContainer")[0]
+
+  createIndicator({
+    wrapper,
+    type,
+    media,
+    text,
+  })
 }
