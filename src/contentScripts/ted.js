@@ -5,6 +5,7 @@ import seek from "../methods/seek"
 import toggleFullscreen from "../methods/toggleFullscreen"
 import toggleMute from "../methods/toggleMute"
 import isTyping from "../methods/isTyping"
+import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 
 window.onload = () => {
   getVideo()
@@ -55,6 +56,12 @@ const setShortcuts = (media) => {
           break
         case "m":
           preVolume = toggleMute(media, preVolume)
+          break
+        case "<":
+          changePlaybackSpeed(media, "decrease")
+          break
+        case ">":
+          changePlaybackSpeed(media, "increase")
           break
       }
     }
