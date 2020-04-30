@@ -41,13 +41,13 @@ const setShortcuts = (media) => {
           break
         case "j":
           seek({
-            media: media,
+            media,
             direction: "backward",
           })
           break
         case "l":
           seek({
-            media: media,
+            media,
             direction: "forward",
           })
           break
