@@ -1,6 +1,9 @@
 "use strict"
 
-const createIndicator = ({ wrapper, type, media, text }) => {
+const createIndicator = ({ type, id, text, wrapper, media }) => {
+  if (!wrapper) {
+    throw '"wrapper" must not be undefined'
+  }
   if (!type) {
     throw '"type" must not be undefined'
   }
@@ -12,30 +15,41 @@ const createIndicator = ({ wrapper, type, media, text }) => {
   indicatorInner.className = "indicatorInner"
   indicatorOuter.appendChild(indicatorInner)
 
-  if (type === "togglePause") {
-    if (!media) {
-      throw '"media" must not be undefined'
+  if (type === "icon") {
+    if (!id) {
+      throw '"id" must not be undefined'
     }
-    if (media.paused) {
-      const indicatorIcon = document.createElement("img")
-      // eslint-disable-next-line no-undef
-      indicatorIcon.src = chrome.extension.getURL("svg/pause.svg")
-      indicatorInner.appendChild(indicatorIcon)
-    } else {
-      const indicatorIcon = document.createElement("img")
-      // eslint-disable-next-line no-undef
-      indicatorIcon.src = chrome.extension.getURL("svg/play_arrow.svg")
-      indicatorInner.appendChild(indicatorIcon)
+    const indicatorIcon = document.createElement("img")
+    switch (id) {
+      case "togglePause": {
+        if (!media) {
+          throw '"media" must not be undefined'
+        }
+        if (media.paused) {
+          // eslint-disable-next-line no-undef
+          indicatorIcon.src = chrome.extension.getURL("svg/pause.svg")
+        } else {
+          // eslint-disable-next-line no-undef
+          indicatorIcon.src = chrome.extension.getURL("svg/play_arrow.svg")
+        }
+        break
+      }
+      case "seekForward": {
+        // eslint-disable-next-line no-undef
+        indicatorIcon.src = chrome.extension.getURL("svg/forward_10.svg")
+        break
+      }
+      case "seekBackward": {
+        // eslint-disable-next-line no-undef
+        indicatorIcon.src = chrome.extension.getURL("svg/replay_10.svg")
+        break
+      }
+      case "mute": {
+        // eslint-disable-next-line no-undef
+        indicatorIcon.src = chrome.extension.getURL("svg/volume_off.svg")
+        break
+      }
     }
-  } else if (type === "seekForward") {
-    const indicatorIcon = document.createElement("img")
-    // eslint-disable-next-line no-undef
-    indicatorIcon.src = chrome.extension.getURL("svg/forward_10.svg")
-    indicatorInner.appendChild(indicatorIcon)
-  } else if (type === "seekBackward") {
-    const indicatorIcon = document.createElement("img")
-    // eslint-disable-next-line no-undef
-    indicatorIcon.src = chrome.extension.getURL("svg/replay_10.svg")
     indicatorInner.appendChild(indicatorIcon)
   } else if (type === "text") {
     const indicatorText = document.createElement("p")

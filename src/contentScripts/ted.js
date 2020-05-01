@@ -38,25 +38,25 @@ const setShortcuts = (media) => {
       switch (e.key) {
         case "k":
           togglePause(media)
-          callIndicatorCreator({ type: "togglePause", media })
+          callIndicatorCreator({ type: "icon", id: "togglePause", media })
           break
         case " ":
           togglePause(media)
-          callIndicatorCreator({ type: "togglePause", media })
+          callIndicatorCreator({ type: "icon", id: "togglePause", media })
           break
         case "j":
           seek({
             media,
             direction: "backward",
           })
-          callIndicatorCreator({ type: "seekBackward" })
+          callIndicatorCreator({ type: "icon", id: "seekBackward" })
           break
         case "l":
           seek({
             media,
             direction: "forward",
           })
-          callIndicatorCreator({ type: "seekForward" })
+          callIndicatorCreator({ type: "icon", id: "seekForward" })
           break
         case "f":
           toggleFullscreen(media, document)
@@ -89,13 +89,14 @@ const setShortcuts = (media) => {
   }
 }
 
-const callIndicatorCreator = ({ type, media, text }) => {
+const callIndicatorCreator = ({ type, id, text, media }) => {
   const wrapper = document.getElementsByTagName("video")[0].parentNode
 
   createIndicator({
-    wrapper,
     type,
-    media,
+    id,
     text,
+    wrapper,
+    media,
   })
 }

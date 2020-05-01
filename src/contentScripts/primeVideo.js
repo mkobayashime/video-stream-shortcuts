@@ -44,11 +44,11 @@ const setShortcuts = (media) => {
       switch (e.key) {
         case "k":
           togglePause(media)
-          callIndicatorCreator({ type: "togglePause", media })
+          callIndicatorCreator({ type: "icon", id: "togglePause", media })
           break
         case " ":
           togglePause(media)
-          callIndicatorCreator({ type: "togglePause", media })
+          callIndicatorCreator({ type: "icon", id: "togglePause", media })
           break
         case "j":
           seek({
@@ -56,7 +56,7 @@ const setShortcuts = (media) => {
             direction: "backward",
             cacheRequired: true,
           })
-          callIndicatorCreator({ type: "seekBackward" })
+          callIndicatorCreator({ type: "icon", id: "seekBackward" })
           break
         case "l":
           seek({
@@ -64,7 +64,7 @@ const setShortcuts = (media) => {
             direction: "forward",
             cacheRequired: true,
           })
-          callIndicatorCreator({ type: "seekForward" })
+          callIndicatorCreator({ type: "icon", id: "seekForward" })
           break
         case "<": {
           const curSpeed = changePlaybackSpeed(media, "decrease")
@@ -87,13 +87,14 @@ const setShortcuts = (media) => {
   }
 }
 
-const callIndicatorCreator = ({ type, media, text }) => {
+const callIndicatorCreator = ({ type, id, text, media }) => {
   const wrapper = document.getElementsByClassName("overlaysContainer")[0]
 
   createIndicator({
-    wrapper,
     type,
-    media,
+    id,
     text,
+    wrapper,
+    media,
   })
 }
