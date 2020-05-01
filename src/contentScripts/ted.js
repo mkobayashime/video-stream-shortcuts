@@ -63,10 +63,14 @@ const setShortcuts = (media) => {
           break
         case "m":
           preVolume = toggleMute(media, preVolume)
-          callIndicatorCreator({
-            type: "text",
-            text: Math.round(media.volume * 100).toString() + "%",
-          })
+          if (media.volume !== 0) {
+            callIndicatorCreator({
+              type: "text",
+              text: Math.round(media.volume * 100).toString() + "%",
+            })
+          } else {
+            callIndicatorCreator({ type: "icon", id: "mute" })
+          }
           break
         case "<": {
           const curSpeed = changePlaybackSpeed(media, "decrease")
