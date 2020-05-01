@@ -2,7 +2,6 @@
 
 import togglePause from "../methods/togglePause"
 import seek from "../methods/seek"
-import toggleFullscreen from "../methods/toggleFullscreen"
 import toggleMute from "../methods/toggleMute"
 import isTyping from "../methods/isTyping"
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
@@ -35,6 +34,10 @@ const getVideo = () => {
 
 const setShortcuts = (media) => {
   let preVolume
+
+  const toggleFullscreen = () => {
+    document.getElementsByClassName("vjs-fullscreen-control")[0].click()
+  }
 
   document.onkeyup = (e) => {
     if (!isTyping(document)) {
