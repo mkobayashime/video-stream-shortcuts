@@ -66,6 +66,16 @@ const setShortcuts = (media) => {
           })
           callIndicatorCreator({ type: "icon", id: "seekForward" })
           break
+        case "m":
+          if (media.volume !== 0) {
+            callIndicatorCreator({
+              type: "text",
+              text: Math.round(media.volume * 100).toString() + "%",
+            })
+          } else {
+            callIndicatorCreator({ type: "icon", id: "mute" })
+          }
+          break
         case "<": {
           const curSpeed = changePlaybackSpeed(media, "decrease")
           callIndicatorCreator({
