@@ -19,7 +19,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
     if (tab.url.indexOf(msStreamUrl) !== -1) {
       // eslint-disable-next-line no-undef
       chrome.tabs.sendMessage(tabId, {
-        type: "Updated",
+        type: "updated",
       })
     }
   }

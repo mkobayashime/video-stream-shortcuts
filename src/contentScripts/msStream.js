@@ -10,7 +10,7 @@ import loadIndicatorCss from "../methods/loadIndicatorCss"
 
 // eslint-disable-next-line no-undef
 chrome.runtime.onMessage.addListener((message) => {
-  if (message.type === "msStreamUpdated") {
+  if (message.type === "updated") {
     getVideo()
     loadIndicatorCss()
   }
