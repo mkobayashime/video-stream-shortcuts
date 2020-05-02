@@ -9,6 +9,9 @@ chrome.runtime.onInstalled.addListener(() => {
       chrome.storage.sync.set({ seekSec: 10 })
     }
   })
+
+  // eslint-disable-next-line no-undef
+  chrome.runtime.openOptionsPage()
 })
 
 const msStreamUrl = "web.microsoftstream.com/video/"
