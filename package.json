@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
-    "css-loader": "^3.5.2",
+    "css-loader": "^3.5.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.11.0",
@@ -21,8 +21,11 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
     "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.0",
     "prettier": "^2.0.5",
+    "sass-loader": "^8.0.2",
     "size-plugin": "^2.0.1",
+    "style-loader": "^1.2.1",
     "webpack": "^4.42.1",
     "webpack-cli": "^3.3.11",
     "webpack-merge": "^4.2.2"

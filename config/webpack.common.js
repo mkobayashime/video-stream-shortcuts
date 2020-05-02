@@ -30,6 +30,10 @@ const common = {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
       },
+      {
+        test: /\.sass$/,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
       // Check for images imported in .js files and
       {
         test: /\.(png|jpe?g|gif)$/i,
