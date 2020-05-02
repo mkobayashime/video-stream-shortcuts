@@ -92,8 +92,8 @@ header
           margin-bottom: -.3rem
         p:last-child
           font-weight: 700
-    .version, .maintainer
-      margin-top: 1rem
+    .store, .version, .maintainer
+      margin-top: 1.5rem
       text-align: center
       a
         display: flex
@@ -186,3 +186,13 @@ main
             background-color: var(--color-bg-card)
             color: var(--color-text-default)
             border: 1px var(--color-mono-low) solid
+
+.section-release-note
+  h2:not(:first-child)
+    margin-top: 2rem
+  p
+    margin: 1rem 0
+  .older
+    display: inline-block
+    margin-top: 1rem
+    color: var(--color-text-default)
