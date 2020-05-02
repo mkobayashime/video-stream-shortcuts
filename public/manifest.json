@@ -41,7 +41,8 @@
     }
   ],
   "permissions": [
-    "tabs"
+    "tabs",
+    "storage"
   ],
   "web_accessible_resources": [
     "svg/*",
