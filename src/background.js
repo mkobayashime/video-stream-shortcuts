@@ -3,10 +3,10 @@
 // eslint-disable-next-line no-undef
 chrome.runtime.onInstalled.addListener(() => {
   // eslint-disable-next-line no-undef
-  chrome.storage.sync.get(["seekSec"], (result) => {
-    if (!result.seekSec) {
+  chrome.storage.sync.get(["seek-sec"], (result) => {
+    if (result["seek-sec"] === undefined) {
       // eslint-disable-next-line no-undef
-      chrome.storage.sync.set({ seekSec: 10 })
+      chrome.storage.sync.set({ "seek-sec": 10 })
     }
   })
 

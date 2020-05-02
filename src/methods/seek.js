@@ -2,8 +2,8 @@
 
 const seek = ({ media, direction, cacheRequired = false }) => {
   // eslint-disable-next-line no-undef
-  chrome.storage.sync.get(["seekSec"], (result) => {
-    const seekSec = result.seekSec
+  chrome.storage.sync.get(["seek-sec"], (result) => {
+    const seekSec = result["seek-sec"]
 
     if (direction === "forward") {
       const curTime = media.currentTime
