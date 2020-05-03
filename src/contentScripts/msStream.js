@@ -8,7 +8,6 @@ import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
 import loadIndicatorCss from "../methods/loadIndicatorCss"
 
-// eslint-disable-next-line no-undef
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "updated") {
     getVideo()

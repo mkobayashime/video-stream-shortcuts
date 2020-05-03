@@ -12,7 +12,6 @@ window.onload = () => {
 
   const applySitesAndKeysConfig = (dom) => {
     const key = dom.id
-    // eslint-disable-next-line no-undef
     chrome.storage.sync.get([key], (result) => {
       if (result[key] === false) {
         dom.checked = false
@@ -30,7 +29,6 @@ window.onload = () => {
   const bindSitesAndKeysConfig = (dom) => {
     const key = dom.id
     dom.addEventListener("change", (event) => {
-      // eslint-disable-next-line no-undef
       chrome.storage.sync.set({ [key]: event.srcElement.checked })
     })
   }
@@ -43,12 +41,10 @@ window.onload = () => {
   })
 
   const seekSecInput = document.getElementById("seek-sec")
-  // eslint-disable-next-line no-undef
   chrome.storage.sync.get(["seek-sec"], (result) => {
     seekSecInput.value = result["seek-sec"]
   })
   seekSecInput.addEventListener("change", (event) => {
-    // eslint-disable-next-line no-undef
     chrome.storage.sync.set({ "seek-sec": Number(event.srcElement.value) })
   })
 }

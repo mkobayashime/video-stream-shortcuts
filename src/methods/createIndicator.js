@@ -26,26 +26,21 @@ const createIndicator = ({ type, id, text, wrapper, media }) => {
           throw '"media" must not be undefined'
         }
         if (media.paused) {
-          // eslint-disable-next-line no-undef
           indicatorIcon.src = chrome.extension.getURL("svg/pause.svg")
         } else {
-          // eslint-disable-next-line no-undef
           indicatorIcon.src = chrome.extension.getURL("svg/play_arrow.svg")
         }
         break
       }
       case "seekForward": {
-        // eslint-disable-next-line no-undef
         indicatorIcon.src = chrome.extension.getURL("svg/forward_10.svg")
         break
       }
       case "seekBackward": {
-        // eslint-disable-next-line no-undef
         indicatorIcon.src = chrome.extension.getURL("svg/replay_10.svg")
         break
       }
       case "mute": {
-        // eslint-disable-next-line no-undef
         indicatorIcon.src = chrome.extension.getURL("svg/volume_off.svg")
         break
       }

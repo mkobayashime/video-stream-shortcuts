@@ -29,5 +29,8 @@ module.exports = {
         "trailingComma": "es5"
       }
     ]
+  },
+  globals: {
+    "chrome": true
   }
 }

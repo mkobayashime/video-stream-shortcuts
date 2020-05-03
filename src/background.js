@@ -1,6 +1,5 @@
 "use strict"
 
-// eslint-disable-next-line no-undef
 chrome.runtime.onInstalled.addListener(() => {
   const sitesConfigKeys = ["sites-prime-video", "sites-ted", "sites-ms-stream"]
   const keysConfigKeys = [
@@ -14,10 +13,8 @@ chrome.runtime.onInstalled.addListener(() => {
   ]
 
   const initSitesAndKeysConfig = (key) => {
-    // eslint-disable-next-line no-undef
     chrome.storage.sync.get([key], (result) => {
       if (result[key] === undefined) {
-        // eslint-disable-next-line no-undef
         chrome.storage.sync.set({ [key]: true })
       }
     })
@@ -30,25 +27,20 @@ chrome.runtime.onInstalled.addListener(() => {
     initSitesAndKeysConfig(key)
   })
 
-  // eslint-disable-next-line no-undef
   chrome.storage.sync.get(["seek-sec"], (result) => {
     if (result["seek-sec"] === undefined) {
-      // eslint-disable-next-line no-undef
       chrome.storage.sync.set({ "seek-sec": 10 })
     }
   })
 
-  // eslint-disable-next-line no-undef
   chrome.runtime.openOptionsPage()
 })
 
 const msStreamUrl = "web.microsoftstream.com/video/"
 
-// eslint-disable-next-line no-undef
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete") {
     if (tab.url.indexOf(msStreamUrl) !== -1) {
-      // eslint-disable-next-line no-undef
       chrome.tabs.sendMessage(tabId, {
         type: "updated",
       })
