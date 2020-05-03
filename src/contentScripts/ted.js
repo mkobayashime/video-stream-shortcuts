@@ -8,13 +8,11 @@ import toggleMute from "../methods/toggleMute"
 import isTyping from "../methods/isTyping"
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
-import loadIndicatorCss from "../methods/loadIndicatorCss"
 
 window.onload = () => {
   loadConfig().then((result) => {
     if (result["sites-ted"]) {
       getVideo(result)
-      loadIndicatorCss()
     }
   })
 }

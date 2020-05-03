@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap')
+
+.indicatorOuter
+  position: absolute
+  left: 50%
+  top: 50%
+  transform: translate(-50%, -50%)
+  display: flex
+  align-items: center
+  justify-content: center
+  p
+    margin: 0
+    padding: 0
+    color: #fff
+    font-family: Roboto
+    font-size: 1.25rem
+    font-weight: 700
+
+.indicatorInner
+  background-color: #000
+  border-radius: 50%
+  width: 5rem
+  height: 5rem
+  display: flex
+  align-items: center
+  justify-content: center
+  animation-name: fade-out
+  animation-duration: 400ms
+  animation-timing-function: linear
+  animation-fill-mode: forwards
+  img
+    width: 60%
+    height: 60%
+
+@keyframes fade-out
+  0%
+    opacity: 70%
+    transform: scale(1)
+  100%
+    opacity: 0%
+    transform: scale(1.5)

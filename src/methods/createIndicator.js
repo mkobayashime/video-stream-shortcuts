@@ -1,5 +1,7 @@
 "use strict"
 
+import "../style/indicator.sass"
+
 const createIndicator = ({ type, id, text, wrapper, media }) => {
   if (!wrapper) {
     throw '"wrapper" must not be undefined'

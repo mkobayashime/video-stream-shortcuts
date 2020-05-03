@@ -7,14 +7,12 @@ import toggleMute from "../methods/toggleMute"
 import isTyping from "../methods/isTyping"
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
-import loadIndicatorCss from "../methods/loadIndicatorCss"
 
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "updated") {
     loadConfig().then((result) => {
       if (result["sites-ms-stream"]) {
         getVideo(result)
-        loadIndicatorCss()
       }
     })
   }

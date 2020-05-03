@@ -6,7 +6,6 @@ import seek from "../methods/seek"
 import isTyping from "../methods/isTyping"
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
-import loadIndicatorCss from "../methods/loadIndicatorCss"
 
 window.onload = () => {
   loadConfig().then((result) => {
@@ -16,7 +15,6 @@ window.onload = () => {
       const observer = new MutationObserver(() => {
         if (body.style.overflow === "hidden") {
           getVideo(result)
-          loadIndicatorCss()
         }
       })
 
