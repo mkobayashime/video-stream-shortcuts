@@ -33,11 +33,11 @@ const createIndicator = ({ type, id, text, wrapper, media }) => {
         break
       }
       case "seekForward": {
-        indicatorIcon.src = chrome.extension.getURL("svg/forward_10.svg")
+        indicatorIcon.src = chrome.extension.getURL("svg/forward.svg")
         break
       }
       case "seekBackward": {
-        indicatorIcon.src = chrome.extension.getURL("svg/replay_10.svg")
+        indicatorIcon.src = chrome.extension.getURL("svg/replay.svg")
         break
       }
       case "mute": {
