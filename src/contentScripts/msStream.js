@@ -46,10 +46,6 @@ const setShortcuts = (media) => {
           togglePause(media)
           callIndicatorCreator({ type: "icon", id: "togglePause", media })
           break
-        case " ":
-          togglePause(media)
-          callIndicatorCreator({ type: "icon", id: "togglePause", media })
-          break
         case "j":
           seek({
             media: media,
