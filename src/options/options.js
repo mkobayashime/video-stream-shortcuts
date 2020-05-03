@@ -10,7 +10,7 @@ window.onload = () => {
     document.getElementsByClassName("checkbox-keys")
   )
 
-  const applySiteAndKeyConfig = (dom) => {
+  const applySitesAndKeysConfig = (dom) => {
     const key = dom.id
     // eslint-disable-next-line no-undef
     chrome.storage.sync.get([key], (result) => {
@@ -21,13 +21,13 @@ window.onload = () => {
   }
 
   checkboxesSites.forEach((dom) => {
-    applySiteAndKeyConfig(dom)
+    applySitesAndKeysConfig(dom)
   })
   checkboxesKeys.forEach((dom) => {
-    applySiteAndKeyConfig(dom)
+    applySitesAndKeysConfig(dom)
   })
 
-  const watchSitesAndKeysConfig = (dom) => {
+  const bindSitesAndKeysConfig = (dom) => {
     const key = dom.id
     dom.addEventListener("change", (event) => {
       // eslint-disable-next-line no-undef
@@ -36,10 +36,10 @@ window.onload = () => {
   }
 
   checkboxesSites.forEach((dom) => {
-    watchSitesAndKeysConfig(dom)
+    bindSitesAndKeysConfig(dom)
   })
   checkboxesKeys.forEach((dom) => {
-    watchSitesAndKeysConfig(dom)
+    bindSitesAndKeysConfig(dom)
   })
 
   const seekSecInput = document.getElementById("seek-sec")
