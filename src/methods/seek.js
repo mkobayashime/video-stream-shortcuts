@@ -1,26 +1,21 @@
 "use strict"
 
-const seek = ({ media, direction, cacheRequired = false }) => {
-  // eslint-disable-next-line no-undef
-  chrome.storage.sync.get(["seek-sec"], (result) => {
-    const seekSec = result["seek-sec"]
-
-    if (direction === "forward") {
-      const curTime = media.currentTime
-      media.currentTime = curTime + seekSec
-      if (cacheRequired) {
-        cache(media)
-      }
-    } else if (direction === "backward") {
-      const curTime = media.currentTime
-      media.currentTime = curTime - seekSec > 0 ? curTime - seekSec : 0
-      if (cacheRequired) {
-        cache(media)
-      }
-    } else {
-      throw '"direction" must be either of "forward" or "backward"'
+const seek = ({ media, direction, seekSec, cacheRequired = false }) => {
+  if (direction === "forward") {
+    const curTime = media.currentTime
+    media.currentTime = curTime + seekSec
+    if (cacheRequired) {
+      cache(media)
     }
-  })
+  } else if (direction === "backward") {
+    const curTime = media.currentTime
+    media.currentTime = curTime - seekSec > 0 ? curTime - seekSec : 0
+    if (cacheRequired) {
+      cache(media)
+    }
+  } else {
+    throw '"direction" must be either of "forward" or "backward"'
+  }
 }
 
 // Pause or Resume once and then undo it to load the new frame
