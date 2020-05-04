@@ -1,10 +1,6 @@
 "use strict"
 
-const isTyping = (document) => {
-  if (!document) {
-    throw '"document" must not be undefined'
-  }
-
+const isTyping = () => {
   const tagName = document.activeElement.tagName
 
   // HTML tags to be detected as typing

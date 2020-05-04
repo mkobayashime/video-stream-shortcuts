@@ -37,7 +37,7 @@ const setShortcuts = (media, config) => {
   let preVolume
 
   document.onkeyup = (e) => {
-    if (!isTyping(document)) {
+    if (!isTyping()) {
       switch (e.key) {
         case "k":
           if (config["keys-k"]) {
@@ -67,7 +67,7 @@ const setShortcuts = (media, config) => {
           break
         case "f":
           if (config["keys-f"]) {
-            toggleFullscreen(media, document)
+            toggleFullscreen(media)
           }
           break
         case "m":

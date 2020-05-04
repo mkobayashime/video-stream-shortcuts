@@ -43,7 +43,7 @@ const getVideo = (config) => {
 
 const setShortcuts = (media, config) => {
   document.onkeyup = (e) => {
-    if (!isTyping(document)) {
+    if (!isTyping()) {
       switch (e.key) {
         case "k":
           if (config["keys-k"]) {

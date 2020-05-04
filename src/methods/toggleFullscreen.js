@@ -1,6 +1,6 @@
 "use strict"
 
-const toggleFullsceen = (media, document) => {
+const toggleFullsceen = (media) => {
   if (!document.fullscreenElement) {
     media.requestFullscreen()
   } else {
