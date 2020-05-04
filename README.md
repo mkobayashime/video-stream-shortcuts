@@ -9,8 +9,6 @@ You can get it via [Chrome Web Store](https://chrome.google.com/webstore/detail/
 
 Built on top of awesome [chrome-extension-cli](https://github.com/dutiyesh/chrome-extension-cli)
 
-![thumbnail](./thumbnails/1.png)
-
 ## Supported services
 
 - Prime Video
