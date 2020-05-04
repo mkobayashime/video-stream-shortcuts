@@ -2,6 +2,11 @@
 
 import "../style/indicator.sass"
 
+// type[string]: "icon" or "text"
+// id[string]: id of icon
+// text[string]: string to be displayed in "text" type
+// wrapper[DOM]: Wrapper sized the same as the video
+// media[DOM]: Video to be handled
 const createIndicator = ({ type, id, text, wrapper, media }) => {
   if (!wrapper) {
     throw '"wrapper" must not be undefined'
@@ -56,6 +61,7 @@ const createIndicator = ({ type, id, text, wrapper, media }) => {
 
   wrapper.appendChild(indicatorOuter)
 
+  // Remove the DOM after it disappeared with CSS Animation
   window.setTimeout(() => {
     indicatorOuter.remove()
   }, 600)

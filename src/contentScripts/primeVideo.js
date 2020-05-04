@@ -8,16 +8,17 @@ import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
 
 window.onload = () => {
+  // Check if Prime Video is enabled in setting
   loadConfig().then((result) => {
     if (result["sites-prime-video"]) {
+      // In Prime Video, body gets style "overflow: hidden;"
+      // when the video player is displayed
       const body = document.getElementsByTagName("body")[0]
-
       const observer = new MutationObserver(() => {
         if (body.style.overflow === "hidden") {
           getVideo(result)
         }
       })
-
       observer.observe(body, {
         attributes: true,
       })
@@ -110,6 +111,7 @@ const setShortcuts = (media, config) => {
   }
 }
 
+// Page specific wrapper of methods/createIndicator.js
 const callIndicatorCreator = ({ type, id, text, media }) => {
   const wrapper = document.getElementsByClassName("overlaysContainer")[0]
 

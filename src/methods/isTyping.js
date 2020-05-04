@@ -1,5 +1,6 @@
 "use strict"
 
+// Return if the user is typing
 const isTyping = () => {
   const tagName = document.activeElement.tagName
 

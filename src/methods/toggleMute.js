@@ -1,5 +1,7 @@
 "use strict"
 
+// media[DOM]: Video to be handled
+// preVolume[number]: The volume to be set in unmuting
 const toggleMute = (media, preVolume) => {
   if (media.volume !== 0) {
     preVolume = media.volume

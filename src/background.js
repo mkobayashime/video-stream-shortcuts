@@ -12,6 +12,7 @@ chrome.runtime.onInstalled.addListener(() => {
     "keys-right-arrow",
   ]
 
+  // Set all sites/keys config to true when no config found
   const initSitesAndKeysConfig = (key) => {
     chrome.storage.sync.get([key], (result) => {
       if (result[key] === undefined) {
@@ -19,7 +20,6 @@ chrome.runtime.onInstalled.addListener(() => {
       }
     })
   }
-
   sitesConfigKeys.forEach((key) => {
     initSitesAndKeysConfig(key)
   })
@@ -27,17 +27,19 @@ chrome.runtime.onInstalled.addListener(() => {
     initSitesAndKeysConfig(key)
   })
 
+  // Set seek-sec to 10 when no config found
   chrome.storage.sync.get(["seek-sec"], (result) => {
     if (result["seek-sec"] === undefined) {
       chrome.storage.sync.set({ "seek-sec": 10 })
     }
   })
 
+  // Open options page when the extension is installed/updated
   chrome.runtime.openOptionsPage()
 })
 
+// Send message to MS Stream tab when it's transitioned to the new page
 const msStreamUrl = "web.microsoftstream.com/video/"
-
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
   if (changeInfo.status === "complete") {
     if (tab.url.indexOf(msStreamUrl) !== -1) {

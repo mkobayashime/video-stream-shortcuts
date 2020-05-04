@@ -10,6 +10,7 @@ import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
 
 window.onload = () => {
+  // Check if TED is enabled in setting
   loadConfig().then((result) => {
     if (result["sites-ted"]) {
       getVideo(result)
@@ -108,6 +109,7 @@ const setShortcuts = (media, config) => {
   }
 }
 
+// Page specific wrapper of methods/createIndicator.js
 const callIndicatorCreator = ({ type, id, text, media }) => {
   const wrapper = document.getElementsByTagName("video")[0].parentNode
 

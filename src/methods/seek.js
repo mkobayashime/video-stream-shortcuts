@@ -1,5 +1,9 @@
 "use strict"
 
+// media[DOM]: Video to be handled
+// direction[string]: "forward" or "backward" to seek
+// seekSec[number]: seconds to be moved
+// cacheRequired[boolean]: true to force caching the new frame
 const seek = ({ media, direction, seekSec, cacheRequired = false }) => {
   if (direction === "forward") {
     const curTime = media.currentTime

@@ -8,8 +8,10 @@ import isTyping from "../methods/isTyping"
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
 
+// Run getVideo() when background.js sent "updated" message
 chrome.runtime.onMessage.addListener((message) => {
   if (message.type === "updated") {
+    // Check if MS Stream is enabled in setting
     loadConfig().then((result) => {
       if (result["sites-ms-stream"]) {
         getVideo(result)
@@ -37,6 +39,8 @@ const getVideo = (config) => {
 const setShortcuts = (media, config) => {
   let preVolume
 
+  // Use default fullscreen button on the page instead of /methods/toggleFullscreen.js
+  // in order not to make the video controls invisible in fullscreen mode
   const toggleFullscreen = () => {
     document.getElementsByClassName("vjs-fullscreen-control")[0].click()
   }
@@ -113,6 +117,7 @@ const setShortcuts = (media, config) => {
   }
 }
 
+// Page specific wrapper of methods/createIndicator.js
 const callIndicatorCreator = ({ type, id, text, media }) => {
   const wrapper = document.getElementsByTagName("video")[0].parentNode
   wrapper.style.position = "absolute"

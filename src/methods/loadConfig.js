@@ -1,5 +1,8 @@
 "use strict"
 
+// Load config in chrome.storage with key
+// No key to load all config as object
+// key[string]: key of the config
 const loadConfig = (key) => {
   return new Promise((resolve) => {
     if (!key) {
