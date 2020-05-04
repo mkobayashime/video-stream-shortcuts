@@ -1,6 +1,6 @@
 "use strict"
 
-import "../style/options.sass"
+import "./style/options.sass"
 
 window.onload = () => {
   const checkboxesSites = Array.from(
