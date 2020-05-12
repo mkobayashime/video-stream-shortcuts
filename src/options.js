@@ -19,12 +19,13 @@ window.onload = () => {
       }
     })
   }
-  checkboxesSites.forEach((dom) => {
+
+  for (const dom of checkboxesSites) {
     applySitesAndKeysConfig(dom)
-  })
-  checkboxesKeys.forEach((dom) => {
+  }
+  for (const dom of checkboxesKeys) {
     applySitesAndKeysConfig(dom)
-  })
+  }
 
   // Save sites/keys config to chrome.storage when checkboxes are clicked
   const bindSitesAndKeysConfig = (dom) => {
@@ -33,12 +34,12 @@ window.onload = () => {
       chrome.storage.sync.set({ [key]: event.srcElement.checked })
     })
   }
-  checkboxesSites.forEach((dom) => {
+  for (const dom of checkboxesSites) {
     bindSitesAndKeysConfig(dom)
-  })
-  checkboxesKeys.forEach((dom) => {
+  }
+  for (const dom of checkboxesKeys) {
     bindSitesAndKeysConfig(dom)
-  })
+  }
 
   // Load seek-sec config and apply it to the UI input
   const seekSecInput = document.getElementById("seek-sec")
