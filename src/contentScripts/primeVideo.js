@@ -49,7 +49,9 @@ const setShortcuts = (media, config) => {
         case "k":
           if (config["keys-k"]) {
             togglePause(media)
-            callIndicatorCreator({ type: "icon", id: "togglePause", media })
+            if (!media.paused) {
+              callIndicatorCreator({ type: "icon", id: "togglePause", media })
+            }
           }
           break
         case "j":
@@ -113,7 +115,7 @@ const setShortcuts = (media, config) => {
 
 // Page specific wrapper of methods/createIndicator.js
 const callIndicatorCreator = ({ type, id, text, media }) => {
-  const wrapper = document.getElementsByClassName("overlaysContainer")[0]
+  const wrapper = document.getElementsByClassName("webPlayerUIContainer")[0]
 
   createIndicator({
     type,
