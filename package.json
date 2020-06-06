@@ -1,6 +1,6 @@
 {
   "name": "video-stream-shortcuts",
-  "version": "3.0",
+  "version": "3.1",
   "description": "Add some Youtube-like shortcuts to video streaming services",
   "private": true,
   "scripts": {
