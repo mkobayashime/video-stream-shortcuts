@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "Video Stream Shortcuts",
   "version": "3.1",
-  "description": "Add some Youtube-like shortcuts to video streaming services",
+  "description": "Add some YouTube-like shortcuts to video streaming services",
   "icons": {
     "16": "icons/icon_16.png",
     "32": "icons/icon_32.png",

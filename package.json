@@ -1,7 +1,7 @@
 {
   "name": "video-stream-shortcuts",
   "version": "3.1",
-  "description": "Add some Youtube-like shortcuts to video streaming services",
+  "description": "Add some YouTube-like shortcuts to video streaming services",
   "private": true,
   "scripts": {
     "watch": "webpack --mode=development --watch --config config/webpack.config.js",
