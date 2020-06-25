@@ -42,7 +42,6 @@
     --color-mono-low: #757575
     --color-mono-high: #bdbdbd
 
-
 ul, li
   list-style: none
 
@@ -112,7 +111,7 @@ header
 main
   margin-bottom: 3rem
 
-.section-sites, .section-keys, .section-seek-sec
+.section-sites, .section-keys, .section-seek-sec, .section-speeds
   ul
     li
       display: flex
@@ -161,13 +160,22 @@ main
     &::after
       content: ""
       position: absolute
-      width: 1.5rem 
+      width: 1.5rem
       height: 1.5rem
       left: 0
       top: -25%
       border-radius: 50%
       background-color: var(--color-mono-high)
       transition: all 200ms ease-in-out
+
+.section-speeds
+  ul
+    li
+      select
+        padding: .2rem
+        @include dark()
+          background-color: var(--color-bg-card)
+          color: var(--color-text-default)
 
 .section-seek-sec
   ul
