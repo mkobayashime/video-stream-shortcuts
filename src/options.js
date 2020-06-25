@@ -9,6 +9,9 @@ window.onload = () => {
   const checkboxesKeys = Array.from(
     document.getElementsByClassName("checkbox-keys")
   )
+  const speedSelectors = Array.from(
+    document.getElementsByClassName("speed-selector")
+  )
 
   // Load sites/keys config and apply it to the UI checkbox state
   const applySitesAndKeysConfig = (dom) => {
@@ -19,7 +22,6 @@ window.onload = () => {
       }
     })
   }
-
   for (const dom of checkboxesSites) {
     applySitesAndKeysConfig(dom)
   }
@@ -39,6 +41,30 @@ window.onload = () => {
   }
   for (const dom of checkboxesKeys) {
     bindSitesAndKeysConfig(dom)
+  }
+
+  // Load default playback speeds config and apply it to the UI
+  const applySpeedsConfig = (dom) => {
+    const key = dom.id
+    chrome.storage.sync.get([key], (result) => {
+      if (result[key] !== undefined) {
+        dom.value = result[key]
+      }
+    })
+  }
+  for (const dom of speedSelectors) {
+    applySpeedsConfig(dom)
+  }
+
+  // Save default playback speeds config to chrome.storage when new value is selected
+  const bindSpeedsConfig = (dom) => {
+    const key = dom.id
+    dom.addEventListener("change", (event) => {
+      chrome.storage.sync.set({ [key]: Number(event.srcElement.value) })
+    })
+  }
+  for (const dom of speedSelectors) {
+    bindSpeedsConfig(dom)
   }
 
   // Load seek-sec config and apply it to the UI input
