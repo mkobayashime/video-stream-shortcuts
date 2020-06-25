@@ -11,6 +11,7 @@ chrome.runtime.onInstalled.addListener(() => {
     "keys-left-arrow",
     "keys-right-arrow",
   ]
+  const speedsConfigKeys = ["speed-prime-video", "speed-ted", "speed-ms-stream"]
 
   // Set all sites/keys config to true when no config found
   const initSitesAndKeysConfig = (key) => {
@@ -25,6 +26,18 @@ chrome.runtime.onInstalled.addListener(() => {
   }
   for (const key of keysConfigKeys) {
     initSitesAndKeysConfig(key)
+  }
+
+  // Set default playback speeds to 1 when no config found
+  const initSpeedsConfig = (key) => {
+    chrome.storage.sync.get([key], (result) => {
+      if (result[key] === undefined) {
+        chrome.storage.sync.set({ [key]: 1 })
+      }
+    })
+  }
+  for (const key of speedsConfigKeys) {
+    initSpeedsConfig(key)
   }
 
   // Set seek-sec to 10 when no config found
