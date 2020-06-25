@@ -20,12 +20,12 @@ chrome.runtime.onInstalled.addListener(() => {
       }
     })
   }
-  sitesConfigKeys.forEach((key) => {
+  for (const key of sitesConfigKeys) {
     initSitesAndKeysConfig(key)
-  })
-  keysConfigKeys.forEach((key) => {
+  }
+  for (const key of keysConfigKeys) {
     initSitesAndKeysConfig(key)
-  })
+  }
 
   // Set seek-sec to 10 when no config found
   chrome.storage.sync.get(["seek-sec"], (result) => {
