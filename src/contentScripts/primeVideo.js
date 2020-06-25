@@ -5,6 +5,7 @@ import togglePause from "../methods/togglePause"
 import seek from "../methods/seek"
 import isTyping from "../methods/isTyping"
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
+import applyDefaultPlaybackSpeed from "../methods/applyDefaultPlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
 
 window.onload = () => {
@@ -39,6 +40,7 @@ const getVideo = (config) => {
 
   promise.then((media) => {
     setShortcuts(media, config)
+    applyDefaultPlaybackSpeed(media, "speed-prime-video")
   })
 }
 

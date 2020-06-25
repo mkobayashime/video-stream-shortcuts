@@ -6,6 +6,7 @@ import seek from "../methods/seek"
 import toggleMute from "../methods/toggleMute"
 import isTyping from "../methods/isTyping"
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
+import applyDefaultPlaybackSpeed from "../methods/applyDefaultPlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
 
 // Run getVideo() when background.js sent "updated" message
@@ -33,6 +34,7 @@ const getVideo = (config) => {
 
   promise.then((media) => {
     setShortcuts(media, config)
+    applyDefaultPlaybackSpeed(media, "speed-ms-stream")
   })
 }
 
