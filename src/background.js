@@ -1,6 +1,6 @@
 "use strict"
 
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onInstalled.addListener((details) => {
   const sitesConfigKeys = ["sites-prime-video", "sites-ted", "sites-ms-stream"]
   const keysConfigKeys = [
     "keys-k",
@@ -48,7 +48,9 @@ chrome.runtime.onInstalled.addListener(() => {
   })
 
   // Open options page when the extension is installed/updated
-  chrome.runtime.openOptionsPage()
+  if (["install", "update"].includes(details.reason)) {
+    chrome.runtime.openOptionsPage()
+  }
 })
 
 // Send message to MS Stream tab when it's transitioned to the new page
