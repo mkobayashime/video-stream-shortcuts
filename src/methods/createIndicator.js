@@ -33,22 +33,22 @@ const createIndicator = ({ type, id, text, wrapper, media }) => {
           throw '"media" must not be undefined'
         }
         if (media.paused) {
-          indicatorIcon.src = chrome.extension.getURL("svg/pause.svg")
+          indicatorIcon.src = chrome.runtime.getURL("svg/pause.svg")
         } else {
-          indicatorIcon.src = chrome.extension.getURL("svg/play_arrow.svg")
+          indicatorIcon.src = chrome.runtime.getURL("svg/play_arrow.svg")
         }
         break
       }
       case "seekForward": {
-        indicatorIcon.src = chrome.extension.getURL("svg/forward.svg")
+        indicatorIcon.src = chrome.runtime.getURL("svg/forward.svg")
         break
       }
       case "seekBackward": {
-        indicatorIcon.src = chrome.extension.getURL("svg/replay.svg")
+        indicatorIcon.src = chrome.runtime.getURL("svg/replay.svg")
         break
       }
       case "mute": {
-        indicatorIcon.src = chrome.extension.getURL("svg/volume_off.svg")
+        indicatorIcon.src = chrome.runtime.getURL("svg/volume_off.svg")
         break
       }
     }
