@@ -1,22 +1,27 @@
 "use strict"
 
+const path = require("path")
+const glob = require("glob")
+
 const SizePlugin = require("size-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
-const PATHS = require("./paths")
+const contentScriptEntries = glob.sync("./src/contentScripts/*.js")
+const otherEntries = glob.sync("./src/*.js")
 
-// To re-use webpack configuration across templates,
-// CLI maintains a common webpack configuration file - `webpack.common.js`.
-// Whenever user creates an extension, CLI adds `webpack.common.js` file
-// in template's `config` folder
+const entries = contentScriptEntries.concat(otherEntries).reduce((acc, cur) => {
+  const key = path.basename(cur, ".js")
+  acc[key] = cur
+  return acc
+}, {})
+
 const common = {
   output: {
-    // the build folder to output bundles and assets in.
-    path: PATHS.build,
-    // the filename template for entry chunks
+    path: path.resolve(__dirname, "../build"),
     filename: "[name].js",
   },
+  entry: entries,
   devtool: "source-map",
   stats: {
     all: false,
