@@ -10,11 +10,14 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const contentScriptEntries = glob.sync("./src/contentScripts/*.js")
 const otherEntries = glob.sync("./src/*.js")
 
-const entries = contentScriptEntries.concat(otherEntries).reduce((acc, cur) => {
-  const key = path.basename(cur, ".js")
-  acc[key] = cur
-  return acc
-}, {})
+const entries = [...contentScriptEntries, ...otherEntries].reduce(
+  (acc, cur) => {
+    const key = path.basename(cur, ".js")
+    acc[key] = cur
+    return acc
+  },
+  {}
+)
 
 const common = {
   output: {
