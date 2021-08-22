@@ -1,0 +1,15 @@
+{
+  "endOfLine": "lf",
+  "tabWidth": 2,
+  "singleQuote": false,
+  "trailingComma": "es5",
+  "semi": false,
+  "overrides": [
+    {
+      "files": ["*.tsx", "*.ts"],
+      "options": {
+        "parser": "typescript"
+      }
+    }
+  ]
+}
