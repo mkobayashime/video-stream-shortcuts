@@ -3,13 +3,6 @@
   "version": "3.4",
   "description": "Add some YouTube-like shortcuts to video streaming services",
   "private": true,
-  "scripts": {
-    "watch": "webpack --mode=development --watch --config config/webpack.dev.js",
-    "build": "yarn clear && webpack --mode=production --config config/webpack.prod.js",
-    "lint": "eslint src/**/*.js",
-    "lintfix": "eslint --fix src/**/*.js",
-    "clear": "rimraf build"
-  },
   "devDependencies": {
     "adm-zip": "^0.5.1",
     "copy-webpack-plugin": "^5.1.1",
