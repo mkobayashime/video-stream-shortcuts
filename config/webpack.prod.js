@@ -13,7 +13,7 @@ const version = require("../package.json").version
 const config = merge(common, {
   plugins: [
     new ZipPlugin({
-      path: path.resolve(__dirname, "../"),
+      path: path.resolve(__dirname, "../build"),
       filename: `${version}`,
     }),
   ],
