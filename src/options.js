@@ -33,7 +33,7 @@ window.onload = () => {
   const bindSitesAndKeysConfig = (dom) => {
     const key = dom.id
     dom.addEventListener("change", (event) => {
-      chrome.storage.sync.set({ [key]: event.srcElement.checked })
+      chrome.storage.sync.set({ [key]: event.target.checked })
     })
   }
   for (const dom of checkboxesSites) {
@@ -60,7 +60,7 @@ window.onload = () => {
   const bindSpeedsConfig = (dom) => {
     const key = dom.id
     dom.addEventListener("change", (event) => {
-      chrome.storage.sync.set({ [key]: Number(event.srcElement.value) })
+      chrome.storage.sync.set({ [key]: Number(event.target.value) })
     })
   }
   for (const dom of speedSelectors) {
@@ -74,6 +74,6 @@ window.onload = () => {
   })
   // Save seek-sec config to chrome.storage when the user typed a new value
   seekSecInput.addEventListener("change", (event) => {
-    chrome.storage.sync.set({ "seek-sec": Number(event.srcElement.value) })
+    chrome.storage.sync.set({ "seek-sec": Number(event.target.value) })
   })
 }
