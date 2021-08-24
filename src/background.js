@@ -1,7 +1,12 @@
 "use strict"
 
 chrome.runtime.onInstalled.addListener((details) => {
-  const sitesConfigKeys = ["sites-prime-video", "sites-ted", "sites-ms-stream"]
+  const sitesConfigKeys = [
+    "sites-prime-video",
+    "sites-ted",
+    "sites-ms-stream",
+    "sites-dazn",
+  ]
   const keysConfigKeys = [
     "keys-k",
     "keys-j",

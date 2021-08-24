@@ -28,6 +28,11 @@
       "matches": ["https://www.ted.com/talks/*"],
       "run_at": "document_end",
       "js": ["ted.js"]
+    },
+    {
+      "matches": ["https://www.dazn.com/*"],
+      "run_at": "document_end",
+      "js": ["dazn.js"]
     }
   ],
   "permissions": ["tabs", "storage"],
