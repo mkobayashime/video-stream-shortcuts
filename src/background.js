@@ -11,7 +11,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     "keys-left-arrow",
     "keys-right-arrow",
   ]
-  const speedsConfigKeys = ["speed-prime-video", "speed-ted", "speed-ms-stream"]
+  const speedsConfigKeys = ["speed-prime-video", "speed-ms-stream"]
 
   // Set all sites/keys config to true when no config found
   const initSitesAndKeysConfig = (key) => {
