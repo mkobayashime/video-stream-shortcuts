@@ -1,6 +1,6 @@
 {
   "name": "video-stream-shortcuts",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "description": "Add some YouTube-like shortcuts to video streaming services",
   "private": true,
   "devDependencies": {
