@@ -35,6 +35,6 @@
       "js": ["dazn.js"]
     }
   ],
-  "permissions": ["tabs", "storage"],
+  "permissions": ["storage"],
   "web_accessible_resources": ["svg/*", "*.css"]
 }
