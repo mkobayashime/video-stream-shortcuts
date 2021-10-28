@@ -1,6 +1,6 @@
 # Video Stream Shortcuts
 
-[![Version](https://img.shields.io/badge/Version-3.5.0-blue.svg?style=for-the-badge)](https://chrome.google.com/webstore/detail/video-stream-shortcuts/jkclfjpmbcenbmmheenahiglgkefekim)
+[![Version](https://img.shields.io/badge/Version-3.6.0-blue.svg?style=for-the-badge)](https://chrome.google.com/webstore/detail/video-stream-shortcuts/jkclfjpmbcenbmmheenahiglgkefekim)
 [![MIT License](https://img.shields.io/github/license/mkobayashime/video-stream-shortcuts.svg?style=for-the-badge)](https://github.com/mkobayashime/video-stream-shortcuts/blob/master/LICENSE)
 
 Add some YouTube-like shortcuts to video streaming services
