@@ -57,15 +57,3 @@ chrome.runtime.onInstalled.addListener((details) => {
     chrome.runtime.openOptionsPage()
   }
 })
-
-// Send message to MS Stream tab when it's transitioned to the new page
-const msStreamUrl = "web.microsoftstream.com/video/"
-chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
-  if (changeInfo.status === "complete") {
-    if (tab.url.indexOf(msStreamUrl) !== -1) {
-      chrome.tabs.sendMessage(tabId, {
-        type: "updated",
-      })
-    }
-  }
-})
