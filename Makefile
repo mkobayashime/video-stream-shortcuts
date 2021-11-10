@@ -16,10 +16,10 @@ lint.fix:
 autofix: format lint.fix
 
 dev: install
-	yarn run webpack --mode=development --watch --config config/webpack.dev.js
+	WEBPACK_ENV=development yarn run webpack --watch
 
 build: install clear
-	yarn run webpack --mode=production --config config/webpack.prod.js
+	WEBPACK_ENV=production yarn run webpack
 
 clear: install
 	yarn run rimraf build
