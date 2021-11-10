@@ -2,14 +2,16 @@
 
 const path = require("path")
 const glob = require("glob")
-
-const SizePlugin = require("size-plugin")
 const CopyWebpackPlugin = require("copy-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const ZipWebpackPlugin = require("zip-webpack-plugin")
+
+const isDev = process.env.WEBPACK_ENV !== "production"
+
+const version = require("./package.json").version
 
 const contentScriptEntries = glob.sync("./src/contentScripts/*.js")
 const otherEntries = glob.sync("./src/*.js")
-
 const entries = [...contentScriptEntries, ...otherEntries].reduce(
   (acc, cur) => {
     const key = path.basename(cur, ".js")
@@ -19,12 +21,15 @@ const entries = [...contentScriptEntries, ...otherEntries].reduce(
   {}
 )
 
-const common = {
+/** @type {import('webpack').Configuration} */
+const config = {
+  mode: isDev ? "development" : "production",
+  entry: entries,
   output: {
-    path: path.resolve(__dirname, "../build"),
+    path: path.resolve("build"),
     filename: "[name].js",
   },
-  entry: entries,
+  devtool: isDev ? "source-map" : false,
   stats: {
     all: false,
     errors: true,
@@ -32,7 +37,6 @@ const common = {
   },
   module: {
     rules: [
-      // Help webpack in understanding CSS files imported in .js files
       {
         test: /\.css$/,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
@@ -41,7 +45,6 @@ const common = {
         test: /\.sass$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
-      // Check for images imported in .js files and
       {
         test: /\.(png|jpe?g|gif)$/i,
         use: [
@@ -57,20 +60,23 @@ const common = {
     ],
   },
   plugins: [
-    // Print file sizes
-    new SizePlugin(),
-    // Copy static assets from `public` folder to `build` folder
     new CopyWebpackPlugin([
       {
         from: "**/*",
         context: "public",
       },
     ]),
-    // Extract CSS into separate files
     new MiniCssExtractPlugin({
       filename: "[name].css",
     }),
+    ...(isDev
+      ? []
+      : [
+          new ZipWebpackPlugin({
+            filename: version,
+          }),
+        ]),
   ],
 }
 
-module.exports = common
+module.exports = config
