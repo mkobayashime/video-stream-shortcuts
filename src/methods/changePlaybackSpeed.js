@@ -1,7 +1,10 @@
 "use strict"
 
-// media[DOM]: Video to be handled
-// direction[string]: "increase" or "decrease" the playback speed
+/**
+ * @param {HTMLVideoElement} media - Video element to be handled
+ * @param {"increase" | "decrease"} direction
+ * @returns {number} playback rate after changed
+ */
 const changePlaybackSpeed = (media, direction) => {
   const curSpeed = media.playbackRate
   if (direction === "increase") {

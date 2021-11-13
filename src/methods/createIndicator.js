@@ -2,11 +2,18 @@
 
 import "../style/indicator.sass"
 
-// type[string]: "icon" or "text"
-// id[string]: id of icon
-// text[string]: string to be displayed in "text" type
-// wrapper[DOM]: Wrapper sized the same as the video
-// media[DOM]: Video to be handled
+/**
+ * @typedef {Object} Props
+ * @property {"icon" | "text"} type
+ * @property {"togglePause" | "seekForward" | "seekBackward" | "mute"} id - Id of icon
+ * @property {string} text - String to be displayed in "text" type
+ * @property {HTMLElement} wrapper - Wrapper element sized the same as the video
+ * @property {HTMLVideoElement} media - Video element to be handled
+ */
+
+/**
+ * @param {Props}
+ */
 const createIndicator = ({ type, id, text, wrapper, media }) => {
   if (!wrapper) {
     throw '"wrapper" must not be undefined'
