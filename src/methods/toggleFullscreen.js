@@ -1,6 +1,8 @@
 "use strict"
 
-// media[DOM]: Video to be handled
+/**
+ * @param {HTMLVideoElement} media - Video element to be handled
+ */
 const toggleFullsceen = (media) => {
   if (!document.fullscreenElement) {
     media.requestFullscreen()

@@ -1,10 +1,15 @@
 "use strict"
 
-// Return if the user is typing
+/**
+ * Return if the user is typing
+ * @returns {boolean}
+ */
 const isTyping = () => {
   const tagName = document.activeElement.tagName
 
-  // HTML tags to be detected as typing
+  /**
+   * HTML tags to be detected as typing
+   */
   const inputTags = ["INPUT", "TEXTAREA", "SELECT"]
 
   if (inputTags.indexOf(tagName) !== -1) {

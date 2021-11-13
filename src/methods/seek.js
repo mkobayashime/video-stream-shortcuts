@@ -1,9 +1,16 @@
 "use strict"
 
-// media[DOM]: Video to be handled
-// direction[string]: "forward" or "backward" to seek
-// seekSec[number]: seconds to be moved
-// cacheRequired[boolean]: true to force caching the new frame
+/**
+ * @typedef Props
+ * @property {HTMLVideoElement} media - Video element to be handled
+ * @property {"forward" | "backward"} direction
+ * @property {number} seekSec - Seconds to be moved
+ * @property {boolean} cacheRequired - `true` to force caching the new frame
+ */
+
+/**
+ * @param {Props}
+ */
 const seek = ({ media, direction, seekSec, cacheRequired = false }) => {
   if (direction === "forward") {
     const curTime = media.currentTime
@@ -22,7 +29,9 @@ const seek = ({ media, direction, seekSec, cacheRequired = false }) => {
   }
 }
 
-// Pause or Resume once and then undo it to load the new frame
+/**
+ * Pause or Resume once and then undo it to load the new frame
+ */
 const cache = (media) => {
   if (media.paused) {
     media.play()

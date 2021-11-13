@@ -2,8 +2,10 @@
 
 import loadConfig from "../methods/loadConfig"
 
-// media[DOM]: Video to be handled
-// key[string]: Key to get the default playback speed
+/**
+ * @param {HTMLVideoElement} media - Video element to be handled
+ * @param {string} key - Key to get the default playback speed
+ */
 const applyDefaultPlaybackSpeed = (media, key) => {
   loadConfig(key).then((value) => {
     media.addEventListener("loadeddata", () => {
