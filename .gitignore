@@ -9,9 +9,6 @@
 
 npm-debug.log*
 
-binary files
-/bin
-
 /release
 
 /src/popup.css
