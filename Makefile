@@ -23,3 +23,6 @@ build: install clear
 
 clear: install
 	yarn run rimraf build
+
+version.update:
+	@./bin/version-update.sh
