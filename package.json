@@ -4,6 +4,7 @@
   "description": "Add some YouTube-like shortcuts to video streaming services",
   "private": true,
   "devDependencies": {
+    "@mkobayashime/eslint-config": "^0.2.0",
     "copy-webpack-plugin": "5.1.2",
     "css-loader": "3.6.0",
     "eslint": "8.7.0",
