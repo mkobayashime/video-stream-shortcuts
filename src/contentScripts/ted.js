@@ -1,13 +1,13 @@
 "use strict"
 
+import changePlaybackSpeed from "../methods/changePlaybackSpeed"
+import createIndicator from "../methods/createIndicator"
+import isTyping from "../methods/isTyping"
 import loadConfig from "../methods/loadConfig"
-import togglePause from "../methods/togglePause"
 import seek from "../methods/seek"
 import toggleFullscreen from "../methods/toggleFullscreen"
 import toggleMute from "../methods/toggleMute"
-import isTyping from "../methods/isTyping"
-import changePlaybackSpeed from "../methods/changePlaybackSpeed"
-import createIndicator from "../methods/createIndicator"
+import togglePause from "../methods/togglePause"
 
 window.onload = () => {
   // Check if TED is enabled in setting

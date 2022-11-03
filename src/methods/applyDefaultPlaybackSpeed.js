@@ -1,6 +1,6 @@
 "use strict"
 
-import loadConfig from "../methods/loadConfig"
+import loadConfig from "./loadConfig"
 
 /**
  * @param {HTMLVideoElement} media - Video element to be handled
