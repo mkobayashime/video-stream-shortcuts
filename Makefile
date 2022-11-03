@@ -1,5 +1,6 @@
 eslint = yarn run eslint --ignore-path .gitignore
 prettier = yarn run prettier --ignore-path .gitignore
+webpack = yarn run webpack
 
 install:
 	yarn install
@@ -19,10 +20,10 @@ lint.fix:
 autofix: format lint.fix
 
 dev: install
-	WEBPACK_ENV=development yarn run webpack --watch
+	WEBPACK_ENV=development $(webpack) --watch
 
 build: install clear
-	WEBPACK_ENV=production yarn run webpack
+	WEBPACK_ENV=production $(webpack)
 
 clear: install
 	yarn run rimraf build
