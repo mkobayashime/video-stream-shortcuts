@@ -6,7 +6,7 @@
   "devDependencies": {
     "@mkobayashime/eslint-config": "^0.2.0",
     "copy-webpack-plugin": "5.1.2",
-    "css-loader": "3.6.0",
+    "css-loader": "6.7.1",
     "eslint": "8.26.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
