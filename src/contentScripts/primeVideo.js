@@ -1,12 +1,12 @@
 "use strict"
 
-import loadConfig from "../methods/loadConfig"
-import togglePause from "../methods/togglePause"
-import seek from "../methods/seek"
-import isTyping from "../methods/isTyping"
-import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import applyDefaultPlaybackSpeed from "../methods/applyDefaultPlaybackSpeed"
+import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
+import isTyping from "../methods/isTyping"
+import loadConfig from "../methods/loadConfig"
+import seek from "../methods/seek"
+import togglePause from "../methods/togglePause"
 
 window.onload = () => {
   // Check if Prime Video is enabled in setting

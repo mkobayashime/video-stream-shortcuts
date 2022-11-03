@@ -1,12 +1,12 @@
 "use strict"
 
-import loadConfig from "../methods/loadConfig"
-import togglePause from "../methods/togglePause"
-import seek from "../methods/seek"
-import toggleMute from "../methods/toggleMute"
-import isTyping from "../methods/isTyping"
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
+import isTyping from "../methods/isTyping"
+import loadConfig from "../methods/loadConfig"
+import seek from "../methods/seek"
+import toggleMute from "../methods/toggleMute"
+import togglePause from "../methods/togglePause"
 
 class MsStreamHandler {
   constructor({ config }) {
@@ -45,7 +45,7 @@ class MsStreamHandler {
     ])
 
     loadedAndPlayed.then(() => {
-      global.setTimeout(() => {
+      globalThis.setTimeout(() => {
         this.media.playbackRate = this.config["speed-ms-stream"]
       }, 500)
     })
