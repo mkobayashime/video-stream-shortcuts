@@ -60,12 +60,14 @@ const config = {
     ],
   },
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: "**/*",
-        context: "public",
-      },
-    ]),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: "**/*",
+          context: "public",
+        },
+      ],
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].css",
     }),
