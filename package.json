@@ -10,7 +10,7 @@
     "eslint": "8.26.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
-    "glob": "7.2.3",
+    "glob": "8.0.3",
     "husky": "4.3.8",
     "lint-staged": "12.5.0",
     "mini-css-extract-plugin": "2.6.1",
