@@ -7,7 +7,7 @@
     "@mkobayashime/eslint-config": "^0.2.0",
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.7.1",
-    "eslint": "8.27.0",
+    "eslint": "8.28.0",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
     "glob": "8.0.3",
