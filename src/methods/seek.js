@@ -30,6 +30,17 @@ const seek = ({ media, direction, seekSec, cacheRequired = false }) => {
 }
 
 /**
+ * @param {HTMLVideoElement} media - Video element to be handled
+ * @param {number} numericKey - Number key pressed. Must be between 0 and 9
+ * @param {boolean} [cacheRequired=true] - `true` to force caching the new frame
+ * @returns {void}
+ */
+const decimalSeek = ({ media, numericKey, cacheRequired = true }) => {
+  media.currentTime = media.duration * (numericKey / 10)
+  if (cacheRequired) cache(media)
+}
+
+/**
  * Pause or Resume once and then undo it to load the new frame
  */
 const cache = (media) => {
@@ -42,4 +53,4 @@ const cache = (media) => {
   }
 }
 
-export default seek
+export { seek, decimalSeek }

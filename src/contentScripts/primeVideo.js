@@ -5,7 +5,7 @@ import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
 import isTyping from "../methods/isTyping"
 import loadConfig from "../methods/loadConfig"
-import seek from "../methods/seek"
+import { seek } from "../methods/seek"
 import togglePause from "../methods/togglePause"
 
 window.onload = () => {

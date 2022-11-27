@@ -4,7 +4,7 @@ import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
 import isTyping from "../methods/isTyping"
 import loadConfig from "../methods/loadConfig"
-import seek from "../methods/seek"
+import { seek, decimalSeek } from "../methods/seek"
 import toggleMute from "../methods/toggleMute"
 import togglePause from "../methods/togglePause"
 
@@ -142,6 +142,28 @@ class MsStreamHandler {
               this.callIndicatorCreator({
                 type: "text",
                 text: curSpeed.toString() + "x",
+              })
+            }
+            break
+          }
+          case "0":
+          case "1":
+          case "2":
+          case "3":
+          case "4":
+          case "5":
+          case "6":
+          case "7":
+          case "8":
+          case "9": {
+            if (this.config[`keys-decimal`]) {
+              decimalSeek({
+                media: this.media,
+                numericKey: e.key,
+              })
+              this.callIndicatorCreator({
+                type: "text",
+                text: e.key,
               })
             }
             break
