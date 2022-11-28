@@ -31,7 +31,7 @@ const seek = ({ media, direction, seekSec, cacheRequired = false }) => {
 
 /**
  * @param {HTMLVideoElement} media - Video element to be handled
- * @param {number} numericKey - Number key pressed. Must be between 0 and 9
+ * @param {string} numericKey - Number key pressed. Must be between 0 and 9
  * @param {boolean} [cacheRequired=true] - `true` to force caching the new frame
  * @returns {void}
  */
