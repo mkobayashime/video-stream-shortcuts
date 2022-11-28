@@ -36,7 +36,10 @@ const seek = ({ media, direction, seekSec, cacheRequired = false }) => {
  * @returns {void}
  */
 const decimalSeek = ({ media, numericKey, cacheRequired = true }) => {
-  media.currentTime = media.duration * (numericKey / 10)
+  const keyIndex = parseInt(numericKey)
+  if (isNaN(keyIndex)) return
+
+  media.currentTime = media.duration * (keyIndex / 10)
   if (cacheRequired) cache(media)
 }
 
