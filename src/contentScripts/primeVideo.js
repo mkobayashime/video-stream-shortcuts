@@ -30,7 +30,7 @@ window.onload = () => {
 const getVideo = (config) => {
   const promise = new Promise((resolve) => {
     const interval = window.setInterval(() => {
-      const media = document.getElementsByTagName("video")[0]
+      const media = document.querySelector(".webPlayerElement video")
       if (media) {
         window.clearInterval(interval)
         resolve(media)
