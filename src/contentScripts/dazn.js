@@ -3,7 +3,7 @@
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import isTyping from "../methods/isTyping"
 import loadConfig from "../methods/loadConfig"
-import seek from "../methods/seek"
+import { seek } from "../methods/seek"
 
 class daznHandler {
   constructor({ config }) {

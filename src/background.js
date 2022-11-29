@@ -15,6 +15,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     "keys-m",
     "keys-left-arrow",
     "keys-right-arrow",
+    "keys-decimal",
   ]
   const speedsConfigKeys = ["speed-prime-video", "speed-ms-stream"]
 

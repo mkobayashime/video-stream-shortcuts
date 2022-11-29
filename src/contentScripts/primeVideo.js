@@ -5,7 +5,7 @@ import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import createIndicator from "../methods/createIndicator"
 import isTyping from "../methods/isTyping"
 import loadConfig from "../methods/loadConfig"
-import seek from "../methods/seek"
+import { seek, decimalSeek } from "../methods/seek"
 import togglePause from "../methods/togglePause"
 
 window.onload = () => {
@@ -106,6 +106,28 @@ const setShortcuts = (media, config) => {
             callIndicatorCreator({
               type: "text",
               text: curSpeed.toString() + "x",
+            })
+          }
+          break
+        }
+        case "0":
+        case "1":
+        case "2":
+        case "3":
+        case "4":
+        case "5":
+        case "6":
+        case "7":
+        case "8":
+        case "9": {
+          if (config["keys-decimal"]) {
+            decimalSeek({
+              media: media,
+              numericKey: e.key,
+            })
+            callIndicatorCreator({
+              type: "text",
+              text: e.key,
             })
           }
           break

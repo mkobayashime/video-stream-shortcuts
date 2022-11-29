@@ -20,6 +20,7 @@ You can get it via [Chrome Web Store](https://chrome.google.com/webstore/detail/
 - **m** - Mute/Unmute
 - **Shift+,** / **<** - Decrease playback speed
 - **Shift+.** / **>** - Increase playback speed
+- **0-9** - Jump to percentages of the video, except for DAZN.
 
 ## Contribution
 
