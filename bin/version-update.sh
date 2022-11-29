@@ -10,6 +10,6 @@ $EDITOR $tmpfile
 
 newVersion=`head -n 1 $tmpfile`
 
-sed -i "s/$version/$newVersion/g" package.json public/manifest.json
+sed -i "s/$version/$newVersion/g" package.json public/manifest.json public/options.html
 
 rm $tmpfile
