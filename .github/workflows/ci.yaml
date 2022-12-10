@@ -29,6 +29,9 @@ jobs:
       - name: Prettier
         run: make format.check
 
+      - name: Typecheck
+        run: make typecheck
+
   build:
     runs-on: ubuntu-20.04
     steps:
