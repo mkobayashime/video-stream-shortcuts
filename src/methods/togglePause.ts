@@ -1,9 +1,6 @@
 "use strict"
 
-/**
- * @param {HTMLVideoElement} media - Video element to be handled
- */
-const togglePause = (media) => {
+const togglePause = (media: HTMLVideoElement) => {
   if (media.paused) {
     media.play()
   } else {

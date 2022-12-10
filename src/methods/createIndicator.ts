@@ -3,23 +3,37 @@
 // eslint-disable-next-line import/no-unassigned-import
 import "../style/indicator.sass"
 
-/**
- * @typedef {Object} Props
- * @property {"icon" | "text"} type
- * @property {"togglePause" | "seekForward" | "seekBackward" | "mute"} id - Id of icon
- * @property {string} text - String to be displayed in "text" type
- * @property {HTMLElement} wrapper - Wrapper element sized the same as the video
- * @property {HTMLVideoElement} media - Video element to be handled
- */
+namespace createIndicator {
+  export type Props = PropsWithoutWrapper & {
+    /**
+     * Wrapper element sized the same as the video
+     */
+    wrapper: HTMLElement
+  }
 
-/**
- * @param {Props}
- */
-const createIndicator = ({ type, id, text, wrapper, media }) => {
-  if (!wrapper) {
+  export type PropsWithoutWrapper =
+    | {
+        type: "icon"
+        /**
+         * Id of the icon
+         */
+        id: "togglePause" | "seekForward" | "seekBackward" | "mute"
+        media: HTMLVideoElement
+      }
+    | {
+        type: "text"
+        /**
+         * String to be displayed in "text" type
+         */
+        text: string
+      }
+}
+
+const createIndicator = (props: createIndicator.Props) => {
+  if (!props.wrapper) {
     throw '"wrapper" must not be undefined'
   }
-  if (!type) {
+  if (!props.type) {
     throw '"type" must not be undefined'
   }
 
@@ -30,17 +44,17 @@ const createIndicator = ({ type, id, text, wrapper, media }) => {
   indicatorInner.className = "indicatorInner"
   indicatorOuter.appendChild(indicatorInner)
 
-  if (type === "icon") {
-    if (!id) {
+  if (props.type === "icon") {
+    if (!props.id) {
       throw '"id" must not be undefined'
     }
     const indicatorIcon = document.createElement("img")
-    switch (id) {
+    switch (props.id) {
       case "togglePause": {
-        if (!media) {
+        if (!props.media) {
           throw '"media" must not be undefined'
         }
-        if (media.paused) {
+        if (props.media.paused) {
           indicatorIcon.src = chrome.runtime.getURL("svg/pause.svg")
         } else {
           indicatorIcon.src = chrome.runtime.getURL("svg/play_arrow.svg")
@@ -61,13 +75,13 @@ const createIndicator = ({ type, id, text, wrapper, media }) => {
       }
     }
     indicatorInner.appendChild(indicatorIcon)
-  } else if (type === "text") {
+  } else if (props.type === "text") {
     const indicatorText = document.createElement("p")
-    indicatorText.innerHTML = text
+    indicatorText.innerHTML = props.text
     indicatorInner.appendChild(indicatorText)
   }
 
-  wrapper.appendChild(indicatorOuter)
+  props.wrapper.appendChild(indicatorOuter)
 
   // Remove the DOM after it disappeared with CSS Animation
   window.setTimeout(() => {
@@ -75,4 +89,4 @@ const createIndicator = ({ type, id, text, wrapper, media }) => {
   }, 600)
 }
 
-export default createIndicator
+export { createIndicator }

@@ -1,10 +1,16 @@
 "use strict"
 
+import { StorageSync } from "../types/storage"
+
 /**
  * Load config in `chrome.storage` with key
- * @param {string} key - Key of the config to get. `undefined` to get all the configs.
  */
-const loadConfig = (key) => {
+const loadConfig = (
+  /**
+   * Key of the config to get. `undefined` to get all the configs.
+   */
+  key?: string
+): Promise<StorageSync> => {
   return new Promise((resolve) => {
     if (!key) {
       chrome.storage.sync.get((result) => {

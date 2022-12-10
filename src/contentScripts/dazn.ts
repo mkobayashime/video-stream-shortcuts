@@ -4,9 +4,13 @@ import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import isTyping from "../methods/isTyping"
 import loadConfig from "../methods/loadConfig"
 import { seek } from "../methods/seek"
+import { StorageSync } from "../types/storage"
 
 class daznHandler {
-  constructor({ config }) {
+  media: HTMLVideoElement | null
+  config: StorageSync
+
+  constructor({ config }: { config: StorageSync }) {
     this.media = null
     this.config = config
   }
@@ -30,35 +34,37 @@ class daznHandler {
     document.onkeyup = (e) => {
       if (!this.media) return
 
+      const seekSec = this.config["seek-sec"]
+
       if (!isTyping()) {
         switch (e.key) {
           case "k":
             if (this.config["keys-k"]) {
               const togglePauseButton =
-                document.querySelector(
+                document.querySelector<HTMLElement>(
                   "button[data-test-id*='PLAYER_BUTTON_PLAY']"
                 ) ||
-                document.querySelector(
+                document.querySelector<HTMLElement>(
                   "button[data-test-id*='PLAYER_BUTTON_PAUSE']"
                 )
               if (togglePauseButton) togglePauseButton.click()
             }
             break
           case "j":
-            if (this.config["keys-j"]) {
+            if (this.config["keys-j"] && typeof seekSec === "number") {
               seek({
                 media: this.media,
                 direction: "backward",
-                seekSec: this.config["seek-sec"],
+                seekSec,
               })
             }
             break
           case "l":
-            if (this.config["keys-l"]) {
+            if (this.config["keys-l"] && typeof seekSec === "number") {
               seek({
                 media: this.media,
                 direction: "forward",
-                seekSec: this.config["seek-sec"],
+                seekSec,
               })
             }
             break
@@ -66,7 +72,7 @@ class daznHandler {
             if (this.config["keys-f"]) {
               const fullscreenButton = document.getElementsByClassName(
                 "fullscreen___fullscreen___1OXBx"
-              )[0]
+              )[0] as HTMLElement | undefined
               if (fullscreenButton) fullscreenButton.click()
             }
             break
@@ -74,7 +80,7 @@ class daznHandler {
             if (this.config["keys-m"]) {
               const muteButton = document.getElementsByClassName(
                 "volumeControl___volume-mute-unmute___28Jvb"
-              )[0]
+              )[0] as HTMLElement | undefined
               if (muteButton) muteButton.click()
             }
             break

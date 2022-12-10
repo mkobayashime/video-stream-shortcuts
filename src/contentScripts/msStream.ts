@@ -1,15 +1,20 @@
 "use strict"
 
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
-import createIndicator from "../methods/createIndicator"
+import { createIndicator } from "../methods/createIndicator"
 import isTyping from "../methods/isTyping"
 import loadConfig from "../methods/loadConfig"
 import { seek, decimalSeek } from "../methods/seek"
 import toggleMute from "../methods/toggleMute"
 import togglePause from "../methods/togglePause"
+import { StorageSync } from "../types/storage"
 
 class MsStreamHandler {
-  constructor({ config }) {
+  media: HTMLVideoElement | null
+  config: StorageSync
+  preVolume: number | false
+
+  constructor({ config }: { config: StorageSync }) {
     this.media = null
     this.config = config
     this.preVolume = 1
@@ -17,7 +22,7 @@ class MsStreamHandler {
 
   watch() {
     this.findMedia()
-    this.watchShortcuts(this.media, this.config)
+    this.watchShortcuts()
   }
 
   findMedia() {
@@ -35,24 +40,34 @@ class MsStreamHandler {
   }
 
   applyDefaultPlaybackSpeed() {
+    const media = this.media
+    if (!media) return
+
     const loadedAndPlayed = Promise.all([
       new Promise((resolve) => {
-        this.media.addEventListener("loadeddata", () => resolve())
+        media.addEventListener("loadeddata", () => resolve(true))
       }),
       new Promise((resolve) => {
-        this.media.addEventListener("play", () => resolve())
+        media.addEventListener("play", () => resolve(true))
       }),
     ])
 
     loadedAndPlayed.then(() => {
       globalThis.setTimeout(() => {
-        this.media.playbackRate = this.config["speed-ms-stream"]
+        const enabled = this.config["speed-ms-stream"]
+        if (enabled) {
+          media.playbackRate = enabled
+        }
       }, 500)
     })
   }
 
-  callIndicatorCreator({ type, id, text, media }) {
-    const wrapper = document.getElementsByTagName("video")[0].parentNode
+  callIndicatorCreator(props: createIndicator.PropsWithoutWrapper) {
+    const wrapper = document.getElementsByTagName("video")[0].parentNode as
+      | HTMLElement
+      | undefined
+    if (!wrapper) return
+
     wrapper.style.position = "absolute"
     wrapper.style.width = "100%"
     wrapper.style.height = "100%"
@@ -60,17 +75,16 @@ class MsStreamHandler {
     wrapper.style.left = "0"
 
     createIndicator({
-      type,
-      id,
-      text,
+      ...props,
       wrapper,
-      media,
     })
   }
 
   watchShortcuts() {
     document.onkeyup = (e) => {
       if (!this.media) return
+
+      const seekSec = this.config["seek-sec"]
 
       if (!isTyping()) {
         switch (e.key) {
@@ -85,44 +99,63 @@ class MsStreamHandler {
             }
             break
           case "j":
-            if (this.config["keys-j"]) {
+            if (this.config["keys-j"] && typeof seekSec === "number") {
               seek({
                 media: this.media,
                 direction: "backward",
-                seekSec: this.config["seek-sec"],
+                seekSec,
               })
-              this.callIndicatorCreator({ type: "icon", id: "seekBackward" })
+              this.callIndicatorCreator({
+                type: "icon",
+                id: "seekBackward",
+                media: this.media,
+              })
             }
             break
           case "l":
-            if (this.config["keys-l"]) {
+            if (this.config["keys-l"] && typeof seekSec === "number") {
               seek({
                 media: this.media,
                 direction: "forward",
-                seekSec: this.config["seek-sec"],
+                seekSec,
               })
-              this.callIndicatorCreator({ type: "icon", id: "seekForward" })
+              this.callIndicatorCreator({
+                type: "icon",
+                id: "seekForward",
+                media: this.media,
+              })
             }
             break
           case "f":
             if (this.config["keys-f"]) {
               // Use default fullscreen button on the page instead of /methods/toggleFullscreen.js
               // in order not to make the video controls invisible in fullscreen mode
-              document
-                .getElementsByClassName("vjs-fullscreen-control")[0]
-                .click()
+              const fullscreenControlElement = document.getElementsByClassName(
+                "vjs-fullscreen-control"
+              )[0]
+
+              if (fullscreenControlElement instanceof HTMLElement) {
+                fullscreenControlElement.click()
+              }
             }
             break
           case "m":
             if (this.config["keys-m"]) {
-              this.preVolume = toggleMute(this.media, this.preVolume)
+              this.preVolume = toggleMute(
+                this.media,
+                this.preVolume || undefined
+              )
               if (this.media.volume !== 0) {
                 this.callIndicatorCreator({
                   type: "text",
                   text: Math.round(this.media.volume * 100).toString() + "%",
                 })
               } else {
-                this.callIndicatorCreator({ type: "icon", id: "mute" })
+                this.callIndicatorCreator({
+                  type: "icon",
+                  id: "mute",
+                  media: this.media,
+                })
               }
             }
             break

@@ -2,11 +2,12 @@
 
 import applyDefaultPlaybackSpeed from "../methods/applyDefaultPlaybackSpeed"
 import changePlaybackSpeed from "../methods/changePlaybackSpeed"
-import createIndicator from "../methods/createIndicator"
+import { createIndicator } from "../methods/createIndicator"
 import isTyping from "../methods/isTyping"
 import loadConfig from "../methods/loadConfig"
 import { seek, decimalSeek } from "../methods/seek"
 import togglePause from "../methods/togglePause"
+import { StorageSync } from "../types/storage"
 
 window.onload = () => {
   // Check if Prime Video is enabled in setting
@@ -27,10 +28,12 @@ window.onload = () => {
   })
 }
 
-const getVideo = (config) => {
-  const promise = new Promise((resolve) => {
+const getVideo = (config: StorageSync) => {
+  const promise: Promise<HTMLVideoElement> = new Promise((resolve) => {
     const interval = window.setInterval(() => {
-      const media = document.querySelector(".webPlayerElement video")
+      const media = document.querySelector<HTMLVideoElement>(
+        ".webPlayerElement video"
+      )
       if (media) {
         window.clearInterval(interval)
         resolve(media)
@@ -44,7 +47,9 @@ const getVideo = (config) => {
   })
 }
 
-const setShortcuts = (media, config) => {
+const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
+  const seekSec = config["seek-sec"]
+
   document.onkeyup = (e) => {
     if (!isTyping()) {
       switch (e.key) {
@@ -57,25 +62,25 @@ const setShortcuts = (media, config) => {
           }
           break
         case "j":
-          if (config["keys-j"]) {
+          if (config["keys-j"] && typeof seekSec === "number") {
             seek({
               media: media,
               direction: "backward",
-              seekSec: config["seek-sec"],
+              seekSec,
               cacheRequired: true,
             })
-            callIndicatorCreator({ type: "icon", id: "seekBackward" })
+            callIndicatorCreator({ type: "icon", id: "seekBackward", media })
           }
           break
         case "l":
-          if (config["keys-l"]) {
+          if (config["keys-l"] && typeof seekSec === "number") {
             seek({
               media: media,
               direction: "forward",
-              seekSec: config["seek-sec"],
+              seekSec,
               cacheRequired: true,
             })
-            callIndicatorCreator({ type: "icon", id: "seekForward" })
+            callIndicatorCreator({ type: "icon", id: "seekForward", media })
           }
           break
         case "m":
@@ -86,7 +91,7 @@ const setShortcuts = (media, config) => {
                 text: Math.round(media.volume * 100).toString() + "%",
               })
             } else {
-              callIndicatorCreator({ type: "icon", id: "mute" })
+              callIndicatorCreator({ type: "icon", id: "mute", media })
             }
           }
           break
@@ -137,15 +142,13 @@ const setShortcuts = (media, config) => {
   }
 }
 
-// Page specific wrapper of methods/createIndicator.js
-const callIndicatorCreator = ({ type, id, text, media }) => {
-  const wrapper = document.getElementsByClassName("webPlayerUIContainer")[0]
+// Page specific wrapper of methods/createIndicator.ts
+const callIndicatorCreator = (props: createIndicator.PropsWithoutWrapper) => {
+  const wrapper = document.getElementsByClassName("webPlayerUIContainer")[0] as
+    | HTMLElement
+    | undefined
 
-  createIndicator({
-    type,
-    id,
-    text,
-    wrapper,
-    media,
-  })
+  if (!wrapper) return
+
+  createIndicator({ ...props, wrapper })
 }
