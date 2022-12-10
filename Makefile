@@ -1,6 +1,7 @@
 eslint = yarn run eslint --ignore-path .gitignore
 prettier = yarn run prettier --ignore-path .gitignore
 webpack = yarn run webpack
+typecheck = yarn run tsc --noEmit
 
 install:
 	yarn install
@@ -18,6 +19,12 @@ lint.fix:
 	$(eslint) --fix .
 
 autofix: format lint.fix
+
+typecheck: install
+	$(typecheck)
+
+typecheck.watch: install
+	$(typecheck) --watch
 
 dev: install
 	WEBPACK_ENV=development $(webpack) --watch
