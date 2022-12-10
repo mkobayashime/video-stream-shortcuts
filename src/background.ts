@@ -1,12 +1,14 @@
 "use strict"
 
+import { StorageSync } from "./types/storage"
+
 chrome.runtime.onInstalled.addListener((details) => {
   const sitesConfigKeys = [
     "sites-prime-video",
     "sites-ted",
     "sites-ms-stream",
     "sites-dazn",
-  ]
+  ] as const
   const keysConfigKeys = [
     "keys-k",
     "keys-j",
@@ -16,11 +18,11 @@ chrome.runtime.onInstalled.addListener((details) => {
     "keys-left-arrow",
     "keys-right-arrow",
     "keys-decimal",
-  ]
-  const speedsConfigKeys = ["speed-prime-video", "speed-ms-stream"]
+  ] as const
+  const speedsConfigKeys = ["speed-prime-video", "speed-ms-stream"] as const
 
   // Set all sites/keys config to true when no config found
-  const initSitesAndKeysConfig = (key) => {
+  const initSitesAndKeysConfig = (key: keyof StorageSync) => {
     chrome.storage.sync.get([key], (result) => {
       if (result[key] === undefined) {
         chrome.storage.sync.set({ [key]: true })
@@ -35,7 +37,7 @@ chrome.runtime.onInstalled.addListener((details) => {
   }
 
   // Set default playback speeds to 1 when no config found
-  const initSpeedsConfig = (key) => {
+  const initSpeedsConfig = (key: keyof StorageSync) => {
     chrome.storage.sync.get([key], (result) => {
       if (result[key] === undefined) {
         chrome.storage.sync.set({ [key]: 1 })

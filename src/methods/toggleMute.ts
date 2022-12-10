@@ -1,10 +1,13 @@
 "use strict"
 
-/**
- * @param {HTMLVideoElement} media - Video element to be handled
- * @param {number} preVolume - Volume to be set in unmuting
- */
-const toggleMute = (media, preVolume) => {
+const toggleMute = (
+  media: HTMLVideoElement,
+  /**
+   * Volume to be set in unmuting
+   * `undefined` for `1` (maximum volume)
+   */
+  preVolume?: number
+) => {
   if (media.volume !== 0) {
     preVolume = media.volume
     media.volume = 0

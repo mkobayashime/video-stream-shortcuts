@@ -2,10 +2,9 @@
 
 /**
  * Return if the user is typing
- * @returns {boolean}
  */
 const isTyping = () => {
-  const tagName = document.activeElement.tagName
+  const tagName = document.activeElement?.tagName ?? ""
 
   /**
    * HTML tags to be detected as typing

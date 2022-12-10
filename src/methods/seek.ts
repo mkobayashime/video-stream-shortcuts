@@ -1,17 +1,19 @@
 "use strict"
 
-/**
- * @typedef Props
- * @property {HTMLVideoElement} media - Video element to be handled
- * @property {"forward" | "backward"} direction
- * @property {number} seekSec - Seconds to be moved
- * @property {boolean} cacheRequired - `true` to force caching the new frame
- */
-
-/**
- * @param {Props}
- */
-const seek = ({ media, direction, seekSec, cacheRequired = false }) => {
+const seek = ({
+  media,
+  direction,
+  seekSec,
+  cacheRequired = false,
+}: {
+  media: HTMLVideoElement
+  direction: "forward" | "backward"
+  seekSec: number
+  /**
+   * `true` to force caching the new frame
+   */
+  cacheRequired?: boolean
+}) => {
   if (direction === "forward") {
     const curTime = media.currentTime
     media.currentTime = curTime + seekSec
@@ -29,13 +31,21 @@ const seek = ({ media, direction, seekSec, cacheRequired = false }) => {
   }
 }
 
-/**
- * @param {HTMLVideoElement} media - Video element to be handled
- * @param {string} numericKey - Number key pressed. Must be between 0 and 9
- * @param {boolean} [cacheRequired=true] - `true` to force caching the new frame
- * @returns {void}
- */
-const decimalSeek = ({ media, numericKey, cacheRequired = true }) => {
+const decimalSeek = ({
+  media,
+  numericKey,
+  cacheRequired = true,
+}: {
+  media: HTMLVideoElement
+  /**
+   * Number key pressed. Must be between 0 and 9.
+   */
+  numericKey: string
+  /**
+   * `true` to force caching the new frame
+   */
+  cacheRequired?: boolean
+}) => {
   const keyIndex = parseInt(numericKey)
   if (isNaN(keyIndex)) return
 
@@ -46,7 +56,7 @@ const decimalSeek = ({ media, numericKey, cacheRequired = true }) => {
 /**
  * Pause or Resume once and then undo it to load the new frame
  */
-const cache = (media) => {
+const cache = (media: HTMLVideoElement) => {
   if (media.paused) {
     media.play()
     media.pause()
