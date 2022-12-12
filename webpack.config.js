@@ -10,11 +10,11 @@ const isDev = process.env.WEBPACK_ENV !== "production"
 
 const version = require("./package.json").version
 
-const contentScriptEntries = glob.sync("./src/contentScripts/*.js")
-const otherEntries = glob.sync("./src/*.js")
+const contentScriptEntries = glob.sync("./src/contentScripts/*.ts")
+const otherEntries = glob.sync("./src/*.ts")
 const entries = [...contentScriptEntries, ...otherEntries].reduce(
   (acc, cur) => {
-    const key = path.basename(cur, ".js")
+    const key = path.basename(cur, ".ts")
     acc[key] = cur
     return acc
   },
@@ -57,6 +57,9 @@ const config = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
+  },
+  resolve: {
+    extensions: [".js", ".ts"],
   },
   plugins: [
     new CopyWebpackPlugin({
