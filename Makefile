@@ -26,7 +26,7 @@ typecheck: install
 typecheck.watch: install
 	$(typecheck) --watch
 
-dev: install
+dev: install clear
 	WEBPACK_ENV=development $(webpack) --watch
 
 build: install clear
