@@ -1,14 +1,3 @@
 {
-  "extends": ["config:base"],
-  "rangeStrategy": "pin",
-  "packageRules": [
-    {
-      "matchUpdateTypes": ["patch"],
-      "groupName": "patch upgrades"
-    },
-    {
-      "matchPackagePatterns": ["node"],
-      "rangeStrategy": "replace"
-    }
-  ]
+  "extends": ["github>mkobayashime/renovate-config"]
 }
