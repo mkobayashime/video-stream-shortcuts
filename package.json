@@ -4,7 +4,7 @@
   "description": "Add some YouTube-like shortcuts to video streaming services",
   "private": true,
   "devDependencies": {
-    "@mkobayashime/eslint-config": "0.2.1",
+    "@mkobayashime/eslint-config": "0.3.0",
     "@mkobayashime/eslint-config-typescript": "0.1.2",
     "@tsconfig/recommended": "1.0.2",
     "@types/chrome": "0.0.237",
