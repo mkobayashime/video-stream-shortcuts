@@ -11,6 +11,7 @@ export type StorageSync = Readonly<
     "seek-sec": number
     "sites-dazn": boolean
     "sites-ms-stream": boolean
+    "sites-openrec": boolean
     "sites-prime-video": boolean
     "sites-ted": boolean
     "speed-ms-stream": number
