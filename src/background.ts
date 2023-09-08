@@ -4,10 +4,11 @@ import { StorageSync } from "./types/storage"
 
 chrome.runtime.onInstalled.addListener((details) => {
   const sitesConfigKeys = [
+    "sites-dazn",
+    "sites-ms-stream",
+    "sites-openrec",
     "sites-prime-video",
     "sites-ted",
-    "sites-ms-stream",
-    "sites-dazn",
   ] as const
   const keysConfigKeys = [
     "keys-k",

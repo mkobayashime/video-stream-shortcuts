@@ -33,6 +33,11 @@
       "matches": ["https://www.dazn.com/*"],
       "run_at": "document_end",
       "js": ["dazn.js"]
+    },
+    {
+      "matches": ["https://www.openrec.tv/live/*"],
+      "run_at": "document_end",
+      "js": ["openrec.js"]
     }
   ],
   "permissions": ["storage"],
