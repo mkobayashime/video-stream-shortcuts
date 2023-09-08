@@ -5,7 +5,7 @@
   "private": true,
   "devDependencies": {
     "@mkobayashime/eslint-config": "0.3.0",
-    "@mkobayashime/eslint-config-typescript": "0.1.2",
+    "@mkobayashime/eslint-config-typescript": "1.0.0",
     "@tsconfig/recommended": "1.0.2",
     "@types/chrome": "0.0.245",
     "@types/node": "18.16.18",
