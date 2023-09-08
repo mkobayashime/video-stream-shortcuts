@@ -8,7 +8,7 @@
     "@mkobayashime/eslint-config-typescript": "1.0.0",
     "@tsconfig/recommended": "1.0.2",
     "@types/chrome": "0.0.245",
-    "@types/node": "18.16.18",
+    "@types/node": "18.17.14",
     "@typescript-eslint/eslint-plugin": "6.6.0",
     "@typescript-eslint/parser": "6.6.0",
     "copy-webpack-plugin": "11.0.0",
