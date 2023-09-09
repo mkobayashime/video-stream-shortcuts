@@ -10,6 +10,7 @@ You can get it via [Chrome Web Store](https://chrome.google.com/webstore/detail/
 - TED
 - Microsoft Stream
 - DAZN
+- OPENREC
 
 ## Supported shortcuts
 
