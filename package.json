@@ -22,7 +22,7 @@
     "lint-staged": "13.3.0",
     "mini-css-extract-plugin": "2.7.6",
     "prettier": "3.0.3",
-    "rimraf": "3.0.2",
+    "rimraf": "5.0.7",
     "sass": "1.66.1",
     "sass-loader": "13.3.2",
     "style-loader": "3.3.3",
