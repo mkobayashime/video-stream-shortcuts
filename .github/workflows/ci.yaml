@@ -9,46 +9,20 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: "18"
-
-      - uses: actions/cache@v3
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: yarn install
-        run: yarn --frozen-lockfile
-
-      - name: Lint
-        run: make lint
-
-      - name: Prettier
-        run: make format.check
-
-      - name: Typecheck
-        run: make typecheck
+          bun-version: latest
+      - run: make node_modules
+      - run: make lint
+      - run: make format.check
+      - run: make typecheck
 
   build:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v2
         with:
-          node-version: "18"
-
-      - uses: actions/cache@v3
-        with:
-          path: "**/node_modules"
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
-
-      - name: yarn install
-        run: yarn --frozen-lockfile
-
-      - name: Build
-        run: make build
+          bun-version: latest
+      - run: make node_modules
+      - run: make build
