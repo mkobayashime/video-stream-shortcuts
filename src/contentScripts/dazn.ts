@@ -4,6 +4,7 @@ import changePlaybackSpeed from "../methods/changePlaybackSpeed"
 import isTyping from "../methods/isTyping"
 import loadConfig from "../methods/loadConfig"
 import { seek } from "../methods/seek"
+import togglePause from "../methods/togglePause"
 import { StorageSync } from "../types/storage"
 
 class daznHandler {
@@ -40,14 +41,7 @@ class daznHandler {
         switch (e.key) {
           case "k":
             if (this.config["keys-k"]) {
-              const togglePauseButton =
-                document.querySelector<HTMLElement>(
-                  "button[data-test-id*='PLAYER_BUTTON_PLAY']"
-                ) ||
-                document.querySelector<HTMLElement>(
-                  "button[data-test-id*='PLAYER_BUTTON_PAUSE']"
-                )
-              if (togglePauseButton) togglePauseButton.click()
+              togglePause(this.media)
             }
             break
           case "j":
