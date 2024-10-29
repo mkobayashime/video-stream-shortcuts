@@ -4,6 +4,7 @@
   "description": "Add some YouTube-like shortcuts to video streaming services",
   "private": true,
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
     "@mkobayashime/eslint-config": "0.3.0",
     "@mkobayashime/eslint-config-typescript": "1.0.0",
     "@tsconfig/recommended": "1.0.8",

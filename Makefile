@@ -1,22 +1,15 @@
-eslint = bunx eslint --ignore-path .gitignore
-prettier = bunx prettier --ignore-path .gitignore
+biome = bunx biome
 webpack = bunx webpack
 typecheck = bunx tsc --noEmit
 
 node_modules: PHONY
 	bun install
 
-format: node_modules PHONY
-	$(prettier) --write .
-
-format.check: node_modules PHONY
-	$(prettier) --check .
-
 lint: node_modules PHONY
-	$(eslint) .
+	$(biome) check .
 
 lint.fix: node_modules PHONY
-	$(eslint) --fix .
+	$(biome) check --write .
 
 autofix: format lint.fix PHONY
 

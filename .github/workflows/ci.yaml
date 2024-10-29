@@ -14,7 +14,6 @@ jobs:
           bun-version: latest
       - run: make node_modules
       - run: make lint
-      - run: make format.check
       - run: make typecheck
 
   build:
