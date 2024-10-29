@@ -1,13 +1,11 @@
-"use strict"
-
-import applyDefaultPlaybackSpeed from "../methods/applyDefaultPlaybackSpeed"
-import changePlaybackSpeed from "../methods/changePlaybackSpeed"
-import { createIndicator } from "../methods/createIndicator"
-import isTyping from "../methods/isTyping"
-import loadConfig from "../methods/loadConfig"
-import { seek, decimalSeek } from "../methods/seek"
-import togglePause from "../methods/togglePause"
-import { StorageSync } from "../types/storage"
+import applyDefaultPlaybackSpeed from "../methods/applyDefaultPlaybackSpeed";
+import changePlaybackSpeed from "../methods/changePlaybackSpeed";
+import { createIndicator } from "../methods/createIndicator";
+import isTyping from "../methods/isTyping";
+import loadConfig from "../methods/loadConfig";
+import { decimalSeek, seek } from "../methods/seek";
+import togglePause from "../methods/togglePause";
+import type { StorageSync } from "../types/storage";
 
 window.onload = () => {
   // Check if Prime Video is enabled in setting
@@ -15,52 +13,52 @@ window.onload = () => {
     if (result["sites-prime-video"]) {
       // In Prime Video, body gets style "overflow: hidden;"
       // when the video player is displayed
-      const body = document.getElementsByTagName("body")[0]
+      const body = document.getElementsByTagName("body")[0];
       const observer = new MutationObserver(() => {
         if (body.style.overflow === "hidden") {
-          getVideo(result)
+          getVideo(result);
         }
-      })
+      });
       observer.observe(body, {
         attributes: true,
-      })
+      });
     }
-  })
-}
+  });
+};
 
 const getVideo = (config: StorageSync) => {
   const promise: Promise<HTMLVideoElement> = new Promise((resolve) => {
     const interval = window.setInterval(() => {
       const media = document.querySelector<HTMLVideoElement>(
-        ".webPlayerElement video"
-      )
+        ".webPlayerElement video",
+      );
       if (media) {
-        window.clearInterval(interval)
-        resolve(media)
+        window.clearInterval(interval);
+        resolve(media);
       }
-    }, 250)
-  })
+    }, 250);
+  });
 
   promise.then((media) => {
-    setShortcuts(media, config)
-    applyDefaultPlaybackSpeed(media, "speed-prime-video")
-  })
-}
+    setShortcuts(media, config);
+    applyDefaultPlaybackSpeed(media, "speed-prime-video");
+  });
+};
 
 const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
-  const seekSec = config["seek-sec"]
+  const seekSec = config["seek-sec"];
 
   document.onkeyup = (e) => {
     if (!isTyping()) {
       switch (e.key) {
         case "k":
           if (config["keys-k"]) {
-            togglePause(media)
+            togglePause(media);
             if (!media.paused) {
-              callIndicatorCreator({ type: "icon", id: "togglePause", media })
+              callIndicatorCreator({ type: "icon", id: "togglePause", media });
             }
           }
-          break
+          break;
         case "j":
           if (config["keys-j"] && typeof seekSec === "number") {
             seek({
@@ -68,10 +66,10 @@ const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
               direction: "backward",
               seekSec,
               cacheRequired: true,
-            })
-            callIndicatorCreator({ type: "icon", id: "seekBackward", media })
+            });
+            callIndicatorCreator({ type: "icon", id: "seekBackward", media });
           }
-          break
+          break;
         case "l":
           if (config["keys-l"] && typeof seekSec === "number") {
             seek({
@@ -79,41 +77,41 @@ const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
               direction: "forward",
               seekSec,
               cacheRequired: true,
-            })
-            callIndicatorCreator({ type: "icon", id: "seekForward", media })
+            });
+            callIndicatorCreator({ type: "icon", id: "seekForward", media });
           }
-          break
+          break;
         case "m":
           if (config["keys-m"]) {
             if (media.volume !== 0) {
               callIndicatorCreator({
                 type: "text",
-                text: Math.round(media.volume * 100).toString() + "%",
-              })
+                text: `${Math.round(media.volume * 100).toString()}%`,
+              });
             } else {
-              callIndicatorCreator({ type: "icon", id: "mute", media })
+              callIndicatorCreator({ type: "icon", id: "mute", media });
             }
           }
-          break
+          break;
         case "<": {
           if (config["keys-left-arrow"]) {
-            const curSpeed = changePlaybackSpeed(media, "decrease")
+            const curSpeed = changePlaybackSpeed(media, "decrease");
             callIndicatorCreator({
               type: "text",
-              text: curSpeed.toString() + "x",
-            })
+              text: `${curSpeed.toString()}x`,
+            });
           }
-          break
+          break;
         }
         case ">": {
           if (config["keys-right-arrow"]) {
-            const curSpeed = changePlaybackSpeed(media, "increase")
+            const curSpeed = changePlaybackSpeed(media, "increase");
             callIndicatorCreator({
               type: "text",
-              text: curSpeed.toString() + "x",
-            })
+              text: `${curSpeed.toString()}x`,
+            });
           }
-          break
+          break;
         }
         case "0":
         case "1":
@@ -129,26 +127,26 @@ const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
             decimalSeek({
               media: media,
               numericKey: e.key,
-            })
+            });
             callIndicatorCreator({
               type: "text",
               text: e.key,
-            })
+            });
           }
-          break
+          break;
         }
       }
     }
-  }
-}
+  };
+};
 
 // Page specific wrapper of methods/createIndicator.ts
 const callIndicatorCreator = (props: createIndicator.PropsWithoutWrapper) => {
   const wrapper = document.getElementsByClassName("webPlayerUIContainer")[0] as
     | HTMLElement
-    | undefined
+    | undefined;
 
-  if (!wrapper) return
+  if (!wrapper) return;
 
-  createIndicator({ ...props, wrapper })
-}
+  createIndicator({ ...props, wrapper });
+};
