@@ -8,12 +8,12 @@ const isDev = process.env.WEBPACK_ENV !== "production";
 
 const version = require("./package.json").version;
 
-const contentScriptEntries = glob.sync("./src/contentScripts/*.ts");
-const otherEntries = glob.sync("./src/*.ts");
+const contentScriptEntries = glob.globSync("./src/contentScripts/*.ts");
+const otherEntries = glob.globSync("./src/*.ts");
 const entries = [...contentScriptEntries, ...otherEntries].reduce(
   (acc, cur) => {
     const key = path.basename(cur, ".ts");
-    acc[key] = cur;
+    acc[key] = `./${cur}`;
     return acc;
   },
   {},
