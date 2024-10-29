@@ -1,0 +1,9 @@
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "*.{js,ts,jsx,tsx}"
+      run: bunx eslint {staged_files}
+    prettier:
+      glob: "*"
+      run: bunx prettier --check {staged_files}

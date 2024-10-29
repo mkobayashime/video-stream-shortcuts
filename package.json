@@ -18,8 +18,7 @@
     "eslint-import-resolver-typescript": "3.6.0",
     "eslint-plugin-import": "2.31.0",
     "glob": "8.1.0",
-    "husky": "8.0.3",
-    "lint-staged": "13.3.0",
+    "lefthook": "1.8.2",
     "mini-css-extract-plugin": "2.9.1",
     "prettier": "3.3.3",
     "rimraf": "3.0.2",
@@ -33,15 +32,7 @@
     "zip-webpack-plugin": "4.0.1"
   },
   "scripts": {
-    "prepare": "husky install",
-    "preinstall": "npx only-allow bun"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint"
-    ],
-    "*": [
-      "prettier --check"
-    ]
+    "preinstall": "npx only-allow bun",
+    "prepare": "lefthook install"
   }
 }
