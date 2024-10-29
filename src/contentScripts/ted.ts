@@ -1,113 +1,111 @@
-"use strict"
-
-import changePlaybackSpeed from "../methods/changePlaybackSpeed"
-import { createIndicator } from "../methods/createIndicator"
-import isTyping from "../methods/isTyping"
-import loadConfig from "../methods/loadConfig"
-import { seek, decimalSeek } from "../methods/seek"
-import toggleFullscreen from "../methods/toggleFullscreen"
-import toggleMute from "../methods/toggleMute"
-import togglePause from "../methods/togglePause"
-import { StorageSync } from "../types/storage"
+import changePlaybackSpeed from "../methods/changePlaybackSpeed";
+import { createIndicator } from "../methods/createIndicator";
+import isTyping from "../methods/isTyping";
+import loadConfig from "../methods/loadConfig";
+import { decimalSeek, seek } from "../methods/seek";
+import toggleFullscreen from "../methods/toggleFullscreen";
+import toggleMute from "../methods/toggleMute";
+import togglePause from "../methods/togglePause";
+import type { StorageSync } from "../types/storage";
 
 window.onload = () => {
   // Check if TED is enabled in setting
   loadConfig().then((result) => {
     if (result["sites-ted"]) {
-      getVideo(result)
+      getVideo(result);
     }
-  })
-}
+  });
+};
 
 const getVideo = (config: StorageSync) => {
   const promise: Promise<HTMLVideoElement> = new Promise((resolve) => {
     const interval = window.setInterval(() => {
       const media = document.getElementsByTagName("video")[0] as
         | HTMLVideoElement
-        | undefined
+        | undefined;
       if (media) {
-        window.clearInterval(interval)
-        resolve(media)
+        window.clearInterval(interval);
+        resolve(media);
       }
-    }, 250)
-  })
+    }, 250);
+  });
 
   promise.then((media) => {
-    setShortcuts(media, config)
-  })
-}
+    setShortcuts(media, config);
+  });
+};
 
 const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
-  let preVolume: number | false
+  let preVolume: number | false;
 
-  const seekSec = config["seek-sec"]
+  const seekSec = config["seek-sec"];
 
   document.onkeyup = (e) => {
     if (!isTyping()) {
       switch (e.key) {
         case "k":
           if (config["keys-k"]) {
-            togglePause(media)
-            callIndicatorCreator({ type: "icon", id: "togglePause", media })
+            togglePause(media);
+            callIndicatorCreator({ type: "icon", id: "togglePause", media });
           }
-          break
+          break;
         case "j":
           if (config["keys-j"] && typeof seekSec === "number") {
             seek({
               media,
               direction: "backward",
               seekSec,
-            })
-            callIndicatorCreator({ type: "icon", id: "seekBackward", media })
+            });
+            callIndicatorCreator({ type: "icon", id: "seekBackward", media });
           }
-          break
+          break;
         case "l":
           if (config["keys-l"] && typeof seekSec === "number") {
             seek({
               media,
               direction: "forward",
               seekSec,
-            })
-            callIndicatorCreator({ type: "icon", id: "seekForward", media })
+            });
+            callIndicatorCreator({ type: "icon", id: "seekForward", media });
           }
-          break
+          break;
         case "f":
           if (config["keys-f"]) {
-            toggleFullscreen(media)
+            toggleFullscreen(media);
           }
-          break
+          break;
         case "m":
           if (config["keys-m"]) {
-            preVolume = toggleMute(media, preVolume || undefined)
+            preVolume = toggleMute(media, preVolume || undefined);
             if (media.volume !== 0) {
               callIndicatorCreator({
                 type: "text",
                 text: Math.round(media.volume * 100).toString() + "%",
-              })
+              });
             } else {
-              callIndicatorCreator({ type: "icon", id: "mute", media })
+              callIndicatorCreator({ type: "icon", id: "mute", media });
             }
           }
-          break
+          break;
         case "<": {
           if (config["keys-left-arrow"]) {
-            const curSpeed = changePlaybackSpeed(media, "decrease")
+            const curSpeed = changePlaybackSpeed(media, "decrease");
             callIndicatorCreator({
               type: "text",
               text: curSpeed.toString() + "x",
-            })
+            });
           }
-          break
+          break;
         }
         case ">": {
           if (config["keys-right-arrow"]) {
-            const curSpeed = changePlaybackSpeed(media, "increase")
+            const curSpeed = changePlaybackSpeed(media, "increase");
             callIndicatorCreator({
               type: "text",
               text: curSpeed.toString() + "x",
-            })
+            });
           }
-          break
+          break;
         }
         case "0":
         case "1":
@@ -123,26 +121,26 @@ const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
             decimalSeek({
               media: media,
               numericKey: e.key,
-            })
+            });
             callIndicatorCreator({
               type: "text",
               text: e.key,
-            })
+            });
           }
-          break
+          break;
         }
       }
     }
-  }
-}
+  };
+};
 
 // Page specific wrapper of methods/createIndicator.ts
 const callIndicatorCreator = (props: createIndicator.PropsWithoutWrapper) => {
   const wrapper = document.getElementsByTagName("video")[0].parentNode as
     | HTMLElement
-    | undefined
+    | undefined;
 
-  if (!wrapper) return
+  if (!wrapper) return;
 
-  createIndicator({ ...props, wrapper })
-}
+  createIndicator({ ...props, wrapper });
+};

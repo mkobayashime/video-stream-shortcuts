@@ -1,11 +1,9 @@
-"use strict"
-
 const togglePause = (media: HTMLVideoElement) => {
   if (media.paused) {
-    media.play()
+    media.play();
   } else {
-    media.pause()
+    media.pause();
   }
-}
+};
 
-export default togglePause
+export default togglePause;

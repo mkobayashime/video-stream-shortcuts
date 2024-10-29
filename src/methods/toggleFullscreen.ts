@@ -1,11 +1,9 @@
-"use strict"
-
 const toggleFullsceen = (media: HTMLVideoElement) => {
   if (!document.fullscreenElement) {
-    media.requestFullscreen()
+    media.requestFullscreen();
   } else {
-    document.exitFullscreen()
+    document.exitFullscreen();
   }
-}
+};
 
-export default toggleFullsceen
+export default toggleFullsceen;

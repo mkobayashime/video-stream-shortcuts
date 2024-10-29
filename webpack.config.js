@@ -1,25 +1,23 @@
-"use strict"
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const glob = require("glob");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
+const ZipWebpackPlugin = require("zip-webpack-plugin");
 
-const CopyWebpackPlugin = require("copy-webpack-plugin")
-const glob = require("glob")
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const path = require("path")
-const ZipWebpackPlugin = require("zip-webpack-plugin")
+const isDev = process.env.WEBPACK_ENV !== "production";
 
-const isDev = process.env.WEBPACK_ENV !== "production"
+const version = require("./package.json").version;
 
-const version = require("./package.json").version
-
-const contentScriptEntries = glob.sync("./src/contentScripts/*.ts")
-const otherEntries = glob.sync("./src/*.ts")
+const contentScriptEntries = glob.sync("./src/contentScripts/*.ts");
+const otherEntries = glob.sync("./src/*.ts");
 const entries = [...contentScriptEntries, ...otherEntries].reduce(
   (acc, cur) => {
-    const key = path.basename(cur, ".ts")
-    acc[key] = cur
-    return acc
+    const key = path.basename(cur, ".ts");
+    acc[key] = cur;
+    return acc;
   },
-  {}
-)
+  {},
+);
 
 /** @type {import('webpack').Configuration} */
 const config = {
@@ -81,6 +79,6 @@ const config = {
           }),
         ]),
   ],
-}
+};
 
-module.exports = config
+module.exports = config;

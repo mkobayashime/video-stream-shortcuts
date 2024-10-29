@@ -1,7 +1,5 @@
-"use strict"
-
-import { StorageSync } from "../types/storage"
-import loadConfig from "./loadConfig"
+import type { StorageSync } from "../types/storage";
+import loadConfig from "./loadConfig";
 
 /**
  * @param {HTMLVideoElement} media - Video element to be handled
@@ -12,15 +10,15 @@ const applyDefaultPlaybackSpeed = (
   /**
    * Key to get the default playback speed
    */
-  key: keyof StorageSync
+  key: keyof StorageSync,
 ) => {
   loadConfig(key).then((value) => {
     if (typeof value === "number") {
       media.addEventListener("loadeddata", () => {
-        media.playbackRate = value
-      })
+        media.playbackRate = value;
+      });
     }
-  })
-}
+  });
+};
 
-export default applyDefaultPlaybackSpeed
+export default applyDefaultPlaybackSpeed;
