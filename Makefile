@@ -1,44 +1,41 @@
-eslint = yarn run eslint --ignore-path .gitignore
-prettier = yarn run prettier --ignore-path .gitignore
-webpack = yarn run webpack
-typecheck = yarn run tsc --noEmit
+eslint = bunx eslint --ignore-path .gitignore
+prettier = bunx prettier --ignore-path .gitignore
+webpack = bunx webpack
+typecheck = bunx tsc --noEmit
 
-node_modules: package.json yarn.lock
-ifeq ($(MAKE_YARN_FROZEN_LOCKFILE), 1)
-	yarn install --frozen-lockfile
-else
-	yarn install
-endif
-	@touch node_modules
+node_modules: PHONY
+	bun install
 
-format: node_modules
+format: node_modules PHONY
 	$(prettier) --write .
 
-format.check: node_modules
+format.check: node_modules PHONY
 	$(prettier) --check .
 
-lint: node_modules
+lint: node_modules PHONY
 	$(eslint) .
 
-lint.fix: node_modules
+lint.fix: node_modules PHONY
 	$(eslint) --fix .
 
-autofix: format lint.fix
+autofix: format lint.fix PHONY
 
-typecheck: node_modules
+typecheck: node_modules PHONY
 	$(typecheck)
 
-typecheck.watch: node_modules
+typecheck.watch: node_modules PHONY
 	$(typecheck) --watch
 
-dev: node_modules clear
+dev: node_modules clear PHONY
 	WEBPACK_ENV=development $(webpack) --watch
 
-build: node_modules clear
+build: node_modules clear PHONY
 	WEBPACK_ENV=production $(webpack)
 
-clear: node_modules
-	yarn run rimraf build
+clear: node_modules PHONY
+	bunx rimraf build
 
-version.update:
+version.update: PHONY
 	@./bin/version-update.sh
+
+PHONY:
