@@ -14,7 +14,7 @@
     "copy-webpack-plugin": "11.0.0",
     "css-loader": "6.8.1",
     "eslint": "8.57.1",
-    "eslint-config-prettier": "9.0.0",
+    "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.6.0",
     "eslint-plugin-import": "2.31.0",
     "glob": "8.1.0",
