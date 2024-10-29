@@ -1,7 +1,7 @@
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 const glob = require("glob");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const path = require("path");
+const path = require("node:path");
 const ZipWebpackPlugin = require("zip-webpack-plugin");
 
 const isDev = process.env.WEBPACK_ENV !== "production";

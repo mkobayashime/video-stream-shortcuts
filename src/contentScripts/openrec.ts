@@ -49,6 +49,7 @@ class openrecHandler {
                 this.media.pause();
               }
             }
+            break;
           }
           case "j": {
             if (this.config["keys-j"]) {
@@ -59,6 +60,7 @@ class openrecHandler {
               ).find((e) => e.innerHTML.includes("rewind10s"));
               if (seekButton) seekButton.click();
             }
+            break;
           }
           case "l": {
             if (this.config["keys-l"]) {
@@ -69,6 +71,7 @@ class openrecHandler {
               ).find((e) => e.innerHTML.includes("proceed10s"));
               if (seekButton) seekButton.click();
             }
+            break;
           }
           case "m": {
             if (this.config["keys-m"]) {
@@ -78,6 +81,7 @@ class openrecHandler {
 
               if (muteButton) muteButton.click();
             }
+            break;
           }
         }
       }

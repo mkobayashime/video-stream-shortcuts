@@ -146,7 +146,7 @@ class MsStreamHandler {
               if (this.media.volume !== 0) {
                 this.callIndicatorCreator({
                   type: "text",
-                  text: Math.round(this.media.volume * 100).toString() + "%",
+                  text: `${Math.round(this.media.volume * 100).toString()}%`,
                 });
               } else {
                 this.callIndicatorCreator({
@@ -162,7 +162,7 @@ class MsStreamHandler {
               const curSpeed = changePlaybackSpeed(this.media, "decrease");
               this.callIndicatorCreator({
                 type: "text",
-                text: curSpeed.toString() + "x",
+                text: `${curSpeed.toString()}x`,
               });
             }
             break;
@@ -172,7 +172,7 @@ class MsStreamHandler {
               const curSpeed = changePlaybackSpeed(this.media, "increase");
               this.callIndicatorCreator({
                 type: "text",
-                text: curSpeed.toString() + "x",
+                text: `${curSpeed.toString()}x`,
               });
             }
             break;
@@ -187,7 +187,7 @@ class MsStreamHandler {
           case "7":
           case "8":
           case "9": {
-            if (this.config[`keys-decimal`]) {
+            if (this.config["keys-decimal"]) {
               decimalSeek({
                 media: this.media,
                 numericKey: e.key,

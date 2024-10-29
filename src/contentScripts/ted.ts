@@ -80,7 +80,7 @@ const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
             if (media.volume !== 0) {
               callIndicatorCreator({
                 type: "text",
-                text: Math.round(media.volume * 100).toString() + "%",
+                text: `${Math.round(media.volume * 100).toString()}%`,
               });
             } else {
               callIndicatorCreator({ type: "icon", id: "mute", media });
@@ -92,7 +92,7 @@ const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
             const curSpeed = changePlaybackSpeed(media, "decrease");
             callIndicatorCreator({
               type: "text",
-              text: curSpeed.toString() + "x",
+              text: `${curSpeed.toString()}x`,
             });
           }
           break;
@@ -102,7 +102,7 @@ const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
             const curSpeed = changePlaybackSpeed(media, "increase");
             callIndicatorCreator({
               type: "text",
-              text: curSpeed.toString() + "x",
+              text: `${curSpeed.toString()}x`,
             });
           }
           break;

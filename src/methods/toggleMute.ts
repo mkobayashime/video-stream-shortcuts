@@ -7,17 +7,17 @@ const toggleMute = (
   preVolume?: number,
 ) => {
   if (media.volume !== 0) {
-    preVolume = media.volume;
+    const copiedPreVolume = media.volume;
     media.volume = 0;
-    return preVolume;
-  } else {
-    if (preVolume) {
-      media.volume = preVolume;
-    } else {
-      media.volume = 1;
-    }
-    return false;
+    return copiedPreVolume;
   }
+
+  if (preVolume) {
+    media.volume = preVolume;
+  } else {
+    media.volume = 1;
+  }
+  return false;
 };
 
 export default toggleMute;

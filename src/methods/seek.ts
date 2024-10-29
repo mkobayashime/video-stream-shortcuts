@@ -45,7 +45,7 @@ const decimalSeek = ({
   cacheRequired?: boolean;
 }) => {
   const keyIndex = Number.parseInt(numericKey);
-  if (isNaN(keyIndex)) return;
+  if (Number.isNaN(keyIndex)) return;
 
   media.currentTime = media.duration * (keyIndex / 10);
   if (cacheRequired) cache(media);
