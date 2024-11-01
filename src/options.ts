@@ -1,4 +1,6 @@
+import { getConfig } from "./methods/getConfig";
 import "./style/options.sass";
+import type { StorageSync } from "./types/storage";
 
 window.onload = () => {
   const checkboxesSites = Array.from(
@@ -18,20 +20,15 @@ window.onload = () => {
   );
 
   // Load sites/keys config and apply it to the UI checkbox state
-  const applySitesAndKeysConfig = (dom: HTMLInputElement) => {
-    const key = dom.id;
-    chrome.storage.sync.get([key], (result) => {
-      if (result[key] === false) {
-        dom.checked = false;
-      }
-    });
+  const applySitesAndKeysConfig = async (dom: HTMLInputElement) => {
+    const enabled = await getConfig(dom.id as keyof StorageSync);
+    if (enabled === false) {
+      dom.checked = false;
+    }
   };
-  for (const dom of checkboxesSites) {
-    applySitesAndKeysConfig(dom);
-  }
-  for (const dom of checkboxesKeys) {
-    applySitesAndKeysConfig(dom);
-  }
+  void Promise.all(
+    [...checkboxesSites, ...checkboxesKeys].map(applySitesAndKeysConfig),
+  );
 
   // Save sites/keys config to chrome.storage when checkboxes are clicked
   const bindSitesAndKeysConfig = (dom: HTMLInputElement) => {
@@ -42,25 +39,18 @@ window.onload = () => {
       }
     });
   };
-  for (const dom of checkboxesSites) {
-    bindSitesAndKeysConfig(dom);
-  }
-  for (const dom of checkboxesKeys) {
+  for (const dom of [...checkboxesSites, ...checkboxesKeys]) {
     bindSitesAndKeysConfig(dom);
   }
 
   // Load default playback speeds config and apply it to the UI
-  const applySpeedsConfig = (dom: HTMLSelectElement) => {
-    const key = dom.id;
-    chrome.storage.sync.get([key], (result) => {
-      if (result[key] !== undefined) {
-        dom.value = result[key];
-      }
-    });
+  const applySpeedsConfig = async (dom: HTMLSelectElement) => {
+    const speed = await getConfig(dom.id as keyof StorageSync);
+    if (typeof speed === "number") {
+      dom.value = String(speed);
+    }
   };
-  for (const dom of speedSelectors) {
-    applySpeedsConfig(dom);
-  }
+  void Promise.all(speedSelectors.map(applySpeedsConfig));
 
   // Save default playback speeds config to chrome.storage when new value is selected
   const bindSpeedsConfig = (dom: HTMLSelectElement) => {
@@ -75,15 +65,21 @@ window.onload = () => {
     bindSpeedsConfig(dom);
   }
 
-  // Load seek-sec config and apply it to the UI input
-  const seekSecInput = document.getElementById("seek-sec") as HTMLInputElement;
-  chrome.storage.sync.get(["seek-sec"], (result) => {
-    seekSecInput.value = result["seek-sec"];
-  });
-  // Save seek-sec config to chrome.storage when the user typed a new value
-  seekSecInput.addEventListener("change", (event) => {
-    if (event.target instanceof HTMLInputElement) {
-      chrome.storage.sync.set({ "seek-sec": Number(event.target.value) });
+  void (async () => {
+    // Load seek-sec config and apply it to the UI input
+    const seekSecInput = document.getElementById(
+      "seek-sec",
+    ) as HTMLInputElement;
+    const seekSec = await getConfig("seek-sec");
+    if (typeof seekSec === "number") {
+      seekSecInput.value = String(seekSec);
     }
-  });
+
+    // Save seek-sec config to chrome.storage when the user typed a new value
+    seekSecInput.addEventListener("change", (event) => {
+      if (event.target instanceof HTMLInputElement) {
+        chrome.storage.sync.set({ "seek-sec": Number(event.target.value) });
+      }
+    });
+  })();
 };

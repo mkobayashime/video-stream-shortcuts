@@ -1,3 +1,4 @@
+import { getConfig } from "./methods/getConfig";
 import type { StorageSync } from "./types/storage";
 
 chrome.runtime.onInstalled.addListener((details) => {
@@ -21,38 +22,32 @@ chrome.runtime.onInstalled.addListener((details) => {
   const speedsConfigKeys = ["speed-prime-video", "speed-ms-stream"] as const;
 
   // Set all sites/keys config to true when no config found
-  const initSitesAndKeysConfig = (key: keyof StorageSync) => {
-    chrome.storage.sync.get([key], (result) => {
-      if (result[key] === undefined) {
-        chrome.storage.sync.set({ [key]: true });
-      }
-    });
+  const initSitesAndKeysConfig = async (key: keyof StorageSync) => {
+    const enabled = await getConfig(key);
+    if (enabled === undefined) {
+      chrome.storage.sync.set({ [key]: true });
+    }
   };
-  for (const key of sitesConfigKeys) {
-    initSitesAndKeysConfig(key);
-  }
-  for (const key of keysConfigKeys) {
-    initSitesAndKeysConfig(key);
-  }
+  void Promise.all(
+    [...sitesConfigKeys, ...keysConfigKeys].map(initSitesAndKeysConfig),
+  );
 
   // Set default playback speeds to 1 when no config found
-  const initSpeedsConfig = (key: keyof StorageSync) => {
-    chrome.storage.sync.get([key], (result) => {
-      if (result[key] === undefined) {
-        chrome.storage.sync.set({ [key]: 1 });
-      }
-    });
+  const initSpeedsConfig = async (key: keyof StorageSync) => {
+    const speed = await getConfig(key);
+    if (speed === undefined) {
+      chrome.storage.sync.set({ [key]: 1 });
+    }
   };
-  for (const key of speedsConfigKeys) {
-    initSpeedsConfig(key);
-  }
+  void Promise.all(speedsConfigKeys.map(initSpeedsConfig));
 
   // Set seek-sec to 10 when no config found
-  chrome.storage.sync.get(["seek-sec"], (result) => {
-    if (result["seek-sec"] === undefined) {
+  void (async () => {
+    const seekSec = await getConfig("seek-sec");
+    if (seekSec === undefined) {
       chrome.storage.sync.set({ "seek-sec": 10 });
     }
-  });
+  })();
 
   // Open options page when the extension is installed/updated
   if (["install", "update"].includes(details.reason)) {
