@@ -3,9 +3,9 @@ import type { StorageSync } from "../types/storage";
 /**
  * Load config in `chrome.storage` with key
  */
-async function loadConfig(key: string): Promise<unknown>;
-async function loadConfig(key?: undefined): Promise<StorageSync>;
-async function loadConfig(
+async function getConfig(key: string): Promise<unknown>;
+async function getConfig(key?: undefined): Promise<StorageSync>;
+async function getConfig(
   /**
    * Key of the config to get. `undefined` to get all the configs.
    */
@@ -19,4 +19,4 @@ async function loadConfig(
   return values[key];
 }
 
-export { loadConfig };
+export { getConfig };
