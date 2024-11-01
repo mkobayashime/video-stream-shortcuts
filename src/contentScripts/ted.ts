@@ -1,7 +1,7 @@
 import changePlaybackSpeed from "../methods/changePlaybackSpeed";
 import { createIndicator } from "../methods/createIndicator";
 import isTyping from "../methods/isTyping";
-import loadConfig from "../methods/loadConfig";
+import { loadConfig } from "../methods/loadConfig";
 import { decimalSeek, seek } from "../methods/seek";
 import toggleFullscreen from "../methods/toggleFullscreen";
 import toggleMute from "../methods/toggleMute";

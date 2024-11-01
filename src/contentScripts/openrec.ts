@@ -1,5 +1,5 @@
 import isTyping from "../methods/isTyping";
-import loadConfig from "../methods/loadConfig";
+import { loadConfig } from "../methods/loadConfig";
 import type { StorageSync } from "../types/storage";
 
 class openrecHandler {

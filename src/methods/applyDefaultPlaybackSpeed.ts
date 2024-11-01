@@ -1,5 +1,5 @@
 import type { StorageSync } from "../types/storage";
-import loadConfig from "./loadConfig";
+import { loadConfig } from "./loadConfig";
 
 /**
  * @param {HTMLVideoElement} media - Video element to be handled

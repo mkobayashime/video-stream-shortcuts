@@ -19,4 +19,4 @@ async function loadConfig(
   return values[key];
 }
 
-export default loadConfig;
+export { loadConfig };
