@@ -1,5 +1,5 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Video Stream Shortcuts",
   "version": "4.2.0",
   "description": "Add some YouTube-like shortcuts to video streaming services",
@@ -11,8 +11,8 @@
     "128": "icons/icon_128.png"
   },
   "background": {
-    "scripts": ["background.js"],
-    "persistent": false
+    "service_worker": "background.js",
+    "type": "module"
   },
   "options_page": "options.html",
   "content_scripts": [
@@ -41,5 +41,10 @@
     }
   ],
   "permissions": ["storage"],
-  "web_accessible_resources": ["svg/*", "*.css"]
+  "web_accessible_resources": [
+    {
+      "resources": ["svg/*", "*.css"],
+      "matches": ["*://*/*"]
+    }
+  ]
 }
