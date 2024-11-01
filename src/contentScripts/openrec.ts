@@ -1,5 +1,5 @@
+import { getConfig } from "../methods/getConfig";
 import isTyping from "../methods/isTyping";
-import { loadConfig } from "../methods/loadConfig";
 import type { StorageSync } from "../types/storage";
 
 class openrecHandler {
@@ -89,7 +89,7 @@ class openrecHandler {
   }
 }
 
-loadConfig().then((config) => {
+getConfig().then((config) => {
   if (config["sites-openrec"]) {
     const handler = new openrecHandler({ config });
     handler.watch();

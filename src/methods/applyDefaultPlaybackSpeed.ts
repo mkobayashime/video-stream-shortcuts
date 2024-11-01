@@ -1,5 +1,5 @@
 import type { StorageSync } from "../types/storage";
-import { loadConfig } from "./loadConfig";
+import { getConfig } from "./getConfig";
 
 /**
  * @param {HTMLVideoElement} media - Video element to be handled
@@ -12,7 +12,7 @@ const applyDefaultPlaybackSpeed = (
    */
   key: keyof StorageSync,
 ) => {
-  loadConfig(key).then((value) => {
+  getConfig(key).then((value) => {
     if (typeof value === "number") {
       media.addEventListener("loadeddata", () => {
         media.playbackRate = value;

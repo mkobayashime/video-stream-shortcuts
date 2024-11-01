@@ -1,7 +1,7 @@
 import changePlaybackSpeed from "../methods/changePlaybackSpeed";
 import { createIndicator } from "../methods/createIndicator";
+import { getConfig } from "../methods/getConfig";
 import isTyping from "../methods/isTyping";
-import { loadConfig } from "../methods/loadConfig";
 import { decimalSeek, seek } from "../methods/seek";
 import toggleFullscreen from "../methods/toggleFullscreen";
 import toggleMute from "../methods/toggleMute";
@@ -10,7 +10,7 @@ import type { StorageSync } from "../types/storage";
 
 window.onload = () => {
   // Check if TED is enabled in setting
-  loadConfig().then((result) => {
+  getConfig().then((result) => {
     if (result["sites-ted"]) {
       getVideo(result);
     }

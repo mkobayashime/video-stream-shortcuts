@@ -1,6 +1,6 @@
 import changePlaybackSpeed from "../methods/changePlaybackSpeed";
+import { getConfig } from "../methods/getConfig";
 import isTyping from "../methods/isTyping";
-import { loadConfig } from "../methods/loadConfig";
 import { seek } from "../methods/seek";
 import togglePause from "../methods/togglePause";
 import type { StorageSync } from "../types/storage";
@@ -95,7 +95,7 @@ class daznHandler {
 }
 
 // Check if DAZN is enabled in setting
-loadConfig().then((config) => {
+getConfig().then((config) => {
   if (config["sites-dazn"]) {
     const handler = new daznHandler({ config });
     handler.watch();
