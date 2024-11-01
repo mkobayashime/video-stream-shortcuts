@@ -3,23 +3,20 @@ import type { StorageSync } from "../types/storage";
 /**
  * Load config in `chrome.storage` with key
  */
-const loadConfig = (
+async function loadConfig(key: string): Promise<unknown>;
+async function loadConfig(key?: undefined): Promise<StorageSync>;
+async function loadConfig(
   /**
    * Key of the config to get. `undefined` to get all the configs.
    */
   key?: string,
-): Promise<StorageSync> => {
-  return new Promise((resolve) => {
-    if (!key) {
-      chrome.storage.sync.get((result) => {
-        resolve(result);
-      });
-    } else {
-      chrome.storage.sync.get([key], (result) => {
-        resolve(result[key]);
-      });
-    }
-  });
-};
+): Promise<StorageSync> {
+  if (!key) {
+    return await chrome.storage.sync.get();
+  }
 
-export default loadConfig;
+  const values = await chrome.storage.sync.get([key]);
+  return values[key];
+}
+
+export { loadConfig };
