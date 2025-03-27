@@ -6,7 +6,7 @@
       "devDependencies": {
         "@biomejs/biome": "1.9.4",
         "@tsconfig/recommended": "1.0.8",
-        "@types/chrome": "0.0.312",
+        "@types/chrome": "0.0.313",
         "@types/node": "22.13.14",
         "copy-webpack-plugin": "13.0.0",
         "css-loader": "7.1.2",
@@ -88,7 +88,7 @@
 
     "@tsconfig/recommended": ["@tsconfig/recommended@1.0.8", "", {}, "sha512-TotjFaaXveVUdsrXCdalyF6E5RyG6+7hHHQVZonQtdlk1rJZ1myDIvPUUKPhoYv+JAzThb2lQJh9+9ZfF46hsA=="],
 
-    "@types/chrome": ["@types/chrome@0.0.312", "", { "dependencies": { "@types/filesystem": "*", "@types/har-format": "*" } }, "sha512-m204djOoU/YqF1dRw3YLk2L3tcDTYREUERDQDUAmROK3Rv94nLbMJ4uvjzr/Yj/A7SyEpTrpoCuXBKTuerEdqg=="],
+    "@types/chrome": ["@types/chrome@0.0.313", "", { "dependencies": { "@types/filesystem": "*", "@types/har-format": "*" } }, "sha512-9R5T7gTaYZhkxlu+Ho4wk9FL+y/werWQY2yjGWSqCuiTsqS7nL/BE5UMTP6rU7J+oIG2FRKqrEycHhJATeltVA=="],
 
     "@types/eslint": ["@types/eslint@9.6.1", "", { "dependencies": { "@types/estree": "*", "@types/json-schema": "*" } }, "sha512-FXx2pKgId/WyYo2jXw63kk7/+TY7u7AziEJxJAnSFzHlqTAS3Ync6SvgYAN/k4/PQpnnVuzoMuVnByKK2qp0ag=="],
 
