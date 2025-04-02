@@ -7,7 +7,7 @@
     "@biomejs/biome": "1.9.4",
     "@tsconfig/recommended": "1.0.8",
     "@types/chrome": "0.0.313",
-    "@types/node": "22.13.17",
+    "@types/node": "22.14.0",
     "copy-webpack-plugin": "13.0.0",
     "css-loader": "7.1.2",
     "glob": "11.0.1",
