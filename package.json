@@ -6,8 +6,8 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@tsconfig/recommended": "1.0.10",
-    "@types/chrome": "0.1.0",
-    "@types/node": "24.0.3",
+    "@types/chrome": "0.1.1",
+    "@types/node": "24.0.15",
     "copy-webpack-plugin": "13.0.0",
     "css-loader": "7.1.2",
     "glob": "11.0.3",
