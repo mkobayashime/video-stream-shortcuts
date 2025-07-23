@@ -1,6 +1,6 @@
 import "../style/indicator.sass";
 
-namespace createIndicator {
+export namespace createIndicator {
   export type Props = PropsWithoutWrapper & {
     /**
      * Wrapper element sized the same as the video
@@ -26,7 +26,7 @@ namespace createIndicator {
       };
 }
 
-const createIndicator = (props: createIndicator.Props) => {
+export const createIndicator = (props: createIndicator.Props) => {
   if (!props.wrapper) {
     throw '"wrapper" must not be undefined';
   }
@@ -85,5 +85,3 @@ const createIndicator = (props: createIndicator.Props) => {
     indicatorOuter.remove();
   }, 600);
 };
-
-export { createIndicator };
