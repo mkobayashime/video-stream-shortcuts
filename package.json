@@ -5,6 +5,7 @@
   "private": true,
   "devDependencies": {
     "@biomejs/biome": "2.1.2",
+    "@mkobayashime/shared-config": "2.0.0",
     "@tsconfig/recommended": "1.0.10",
     "@types/chrome": "0.1.0",
     "@types/node": "24.0.3",
