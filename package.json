@@ -4,7 +4,7 @@
   "description": "Add some YouTube-like shortcuts to video streaming services",
   "private": true,
   "devDependencies": {
-    "@biomejs/biome": "2.1.2",
+    "@biomejs/biome": "2.2.0",
     "@mkobayashime/shared-config": "2.0.0",
     "@tsconfig/recommended": "1.0.10",
     "@types/chrome": "0.1.4",
