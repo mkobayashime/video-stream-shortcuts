@@ -15,7 +15,7 @@
     "lefthook": "1.12.3",
     "mini-css-extract-plugin": "2.9.4",
     "rimraf": "6.0.1",
-    "sass": "1.90.0",
+    "sass": "1.91.0",
     "sass-loader": "16.0.5",
     "style-loader": "4.0.0",
     "ts-loader": "9.5.2",
