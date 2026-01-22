@@ -8,7 +8,7 @@
     "@mkobayashime/shared-config": "2.0.0",
     "@tsconfig/recommended": "1.0.10",
     "@types/chrome": "0.1.24",
-    "@types/node": "24.4.0",
+    "@types/node": "24.10.9",
     "copy-webpack-plugin": "13.0.1",
     "css-loader": "7.1.2",
     "glob": "11.0.3",
