@@ -12,6 +12,7 @@
         "@types/node": "24.4.0",
         "copy-webpack-plugin": "13.0.1",
         "css-loader": "7.1.2",
+        "eslint-config-flat-gitignore": "2.1.0",
         "glob": "11.0.3",
         "lefthook": "2.0.1",
         "mini-css-extract-plugin": "2.9.4",
