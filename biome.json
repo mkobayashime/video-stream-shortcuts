@@ -1,11 +1,13 @@
 {
-  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["@mkobayashime/shared-config/biome"],
-  "formatter": {
-    "indentStyle": "space",
-    "indentWidth": 2
-  },
-  "javascript": {
-    "globals": ["chrome"]
-  }
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"extends": ["@mkobayashime/shared-config/biome"],
+	"javascript": {
+		"globals": [
+			"chrome",
+			"browser",
+			"defineContentScript",
+			"defineBackground",
+			"storage"
+		]
+	}
 }
