@@ -30,12 +30,12 @@ window.onload = () => {
 		[...checkboxesSites, ...checkboxesKeys].map(applySitesAndKeysConfig),
 	);
 
-	// Save sites/keys config to chrome.storage when checkboxes are clicked
+	// Save sites/keys config to browser.storage when checkboxes are clicked
 	const bindSitesAndKeysConfig = (dom: HTMLInputElement) => {
 		const key = dom.id;
 		dom.addEventListener("change", (event) => {
 			if (event.target instanceof HTMLInputElement) {
-				void chrome.storage.sync.set({ [key]: event.target.checked });
+				void browser.storage.sync.set({ [key]: event.target.checked });
 			}
 		});
 	};
@@ -52,12 +52,12 @@ window.onload = () => {
 	};
 	void Promise.all(speedSelectors.map(applySpeedsConfig));
 
-	// Save default playback speeds config to chrome.storage when new value is selected
+	// Save default playback speeds config to browser.storage when new value is selected
 	const bindSpeedsConfig = (dom: HTMLSelectElement) => {
 		const key = dom.id;
 		dom.addEventListener("change", (event) => {
 			if (event.target instanceof HTMLSelectElement) {
-				void chrome.storage.sync.set({ [key]: Number(event.target.value) });
+				void browser.storage.sync.set({ [key]: Number(event.target.value) });
 			}
 		});
 	};
@@ -75,10 +75,10 @@ window.onload = () => {
 			seekSecInput.value = String(seekSec);
 		}
 
-		// Save seek-sec config to chrome.storage when the user typed a new value
+		// Save seek-sec config to browser.storage when the user typed a new value
 		seekSecInput.addEventListener("change", (event) => {
 			if (event.target instanceof HTMLInputElement) {
-				void chrome.storage.sync.set({
+				void browser.storage.sync.set({
 					"seek-sec": Number(event.target.value),
 				});
 			}

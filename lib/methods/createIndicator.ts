@@ -52,22 +52,22 @@ export const createIndicator = (props: createIndicator.Props) => {
 					throw new Error('"media" must not be undefined');
 				}
 				if (props.media.paused) {
-					indicatorIcon.src = chrome.runtime.getURL("svg/pause.svg");
+					indicatorIcon.src = browser.runtime.getURL("/svg/pause.svg");
 				} else {
-					indicatorIcon.src = chrome.runtime.getURL("svg/play_arrow.svg");
+					indicatorIcon.src = browser.runtime.getURL("/svg/play_arrow.svg");
 				}
 				break;
 			}
 			case "seekForward": {
-				indicatorIcon.src = chrome.runtime.getURL("svg/forward.svg");
+				indicatorIcon.src = browser.runtime.getURL("/svg/forward.svg");
 				break;
 			}
 			case "seekBackward": {
-				indicatorIcon.src = chrome.runtime.getURL("svg/replay.svg");
+				indicatorIcon.src = browser.runtime.getURL("/svg/replay.svg");
 				break;
 			}
 			case "mute": {
-				indicatorIcon.src = chrome.runtime.getURL("svg/volume_off.svg");
+				indicatorIcon.src = browser.runtime.getURL("/svg/volume_off.svg");
 				break;
 			}
 		}
