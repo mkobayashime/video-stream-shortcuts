@@ -44,7 +44,7 @@ class openrecHandler {
 					case "k": {
 						if (this.config["keys-k"]) {
 							if (this.media.paused) {
-								this.media.play();
+								void this.media.play();
 							} else {
 								this.media.pause();
 							}
@@ -93,7 +93,7 @@ export default defineContentScript({
 	matches: ["https://www.openrec.tv/live/*"],
 	runAt: "document_end",
 	main() {
-		getConfig().then((config) => {
+		void getConfig().then((config) => {
 			if (config["sites-openrec"]) {
 				const handler = new openrecHandler({ config });
 				handler.watch();

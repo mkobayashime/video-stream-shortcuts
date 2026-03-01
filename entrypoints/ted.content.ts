@@ -21,7 +21,7 @@ const getVideo = (config: StorageSync) => {
 		}, 250);
 	});
 
-	promise.then((media) => {
+	void promise.then((media) => {
 		setShortcuts(media, config);
 	});
 };
@@ -142,7 +142,7 @@ export default defineContentScript({
 	main() {
 		window.onload = () => {
 			// Check if TED is enabled in setting
-			getConfig().then((result) => {
+			void getConfig().then((result) => {
 				if (result["sites-ted"]) {
 					getVideo(result);
 				}

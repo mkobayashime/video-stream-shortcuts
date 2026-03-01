@@ -20,7 +20,7 @@ const changePlaybackSpeed = (
 		return media.playbackRate;
 	}
 
-	throw '"direction" must be either of "increase" or "decrease"';
+	throw new Error('"direction" must be either of "increase" or "decrease"');
 };
 
 export default changePlaybackSpeed;

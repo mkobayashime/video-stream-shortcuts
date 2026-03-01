@@ -25,7 +25,7 @@ const seek = ({
 			cache(media);
 		}
 	} else {
-		throw '"direction" must be either of "forward" or "backward"';
+		throw new Error('"direction" must be either of "forward" or "backward"');
 	}
 };
 
@@ -56,11 +56,11 @@ const decimalSeek = ({
  */
 const cache = (media: HTMLVideoElement) => {
 	if (media.paused) {
-		media.play();
+		void media.play();
 		media.pause();
 	} else {
 		media.pause();
-		media.play();
+		void media.play();
 	}
 };
 

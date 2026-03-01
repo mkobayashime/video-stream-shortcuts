@@ -1,6 +1,6 @@
 const togglePause = (media: HTMLVideoElement) => {
 	if (media.paused) {
-		media.play();
+		void media.play();
 	} else {
 		media.pause();
 	}

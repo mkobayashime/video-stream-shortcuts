@@ -1,6 +1,5 @@
 import "../../assets/indicator.sass";
 
-// eslint-disable-next-line @typescript-eslint/no-namespace
 export namespace createIndicator {
 	export type Props = PropsWithoutWrapper & {
 		/**
@@ -29,10 +28,10 @@ export namespace createIndicator {
 
 export const createIndicator = (props: createIndicator.Props) => {
 	if (!props.wrapper) {
-		throw '"wrapper" must not be undefined';
+		throw new Error('"wrapper" must not be undefined');
 	}
 	if (!props.type) {
-		throw '"type" must not be undefined';
+		throw new Error('"type" must not be undefined');
 	}
 
 	const indicatorOuter = document.createElement("div");
@@ -44,13 +43,13 @@ export const createIndicator = (props: createIndicator.Props) => {
 
 	if (props.type === "icon") {
 		if (!props.id) {
-			throw '"id" must not be undefined';
+			throw new Error('"id" must not be undefined');
 		}
 		const indicatorIcon = document.createElement("img");
 		switch (props.id) {
 			case "togglePause": {
 				if (!props.media) {
-					throw '"media" must not be undefined';
+					throw new Error('"media" must not be undefined');
 				}
 				if (props.media.paused) {
 					indicatorIcon.src = chrome.runtime.getURL("svg/pause.svg");

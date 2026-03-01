@@ -12,7 +12,7 @@ const applyDefaultPlaybackSpeed = (
 	 */
 	key: keyof StorageSync,
 ) => {
-	getConfig(key).then((value) => {
+	void getConfig(key).then((value) => {
 		if (typeof value === "number") {
 			media.addEventListener("loadeddata", () => {
 				media.playbackRate = value;

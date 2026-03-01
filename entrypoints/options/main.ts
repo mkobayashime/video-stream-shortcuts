@@ -35,7 +35,7 @@ window.onload = () => {
 		const key = dom.id;
 		dom.addEventListener("change", (event) => {
 			if (event.target instanceof HTMLInputElement) {
-				chrome.storage.sync.set({ [key]: event.target.checked });
+				void chrome.storage.sync.set({ [key]: event.target.checked });
 			}
 		});
 	};
@@ -57,7 +57,7 @@ window.onload = () => {
 		const key = dom.id;
 		dom.addEventListener("change", (event) => {
 			if (event.target instanceof HTMLSelectElement) {
-				chrome.storage.sync.set({ [key]: Number(event.target.value) });
+				void chrome.storage.sync.set({ [key]: Number(event.target.value) });
 			}
 		});
 	};
@@ -78,7 +78,9 @@ window.onload = () => {
 		// Save seek-sec config to chrome.storage when the user typed a new value
 		seekSecInput.addEventListener("change", (event) => {
 			if (event.target instanceof HTMLInputElement) {
-				chrome.storage.sync.set({ "seek-sec": Number(event.target.value) });
+				void chrome.storage.sync.set({
+					"seek-sec": Number(event.target.value),
+				});
 			}
 		});
 	})();

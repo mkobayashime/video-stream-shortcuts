@@ -50,7 +50,7 @@ class MsStreamHandler {
 			}),
 		]);
 
-		loadedAndPlayed.then(() => {
+		void loadedAndPlayed.then(() => {
 			globalThis.setTimeout(() => {
 				const enabled = this.config["speed-ms-stream"];
 				if (enabled) {
@@ -208,7 +208,7 @@ class MsStreamHandler {
 export default defineContentScript({
 	matches: ["https://web.microsoftstream.com/*"],
 	main() {
-		getConfig().then((config) => {
+		void getConfig().then((config) => {
 			if (config["sites-ms-stream"]) {
 				const handler = new MsStreamHandler({ config });
 				handler.watch();

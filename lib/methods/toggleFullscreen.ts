@@ -1,8 +1,8 @@
 const toggleFullsceen = (media: HTMLVideoElement) => {
 	if (!document.fullscreenElement) {
-		media.requestFullscreen();
+		void media.requestFullscreen();
 	} else {
-		document.exitFullscreen();
+		void document.exitFullscreen();
 	}
 };
 

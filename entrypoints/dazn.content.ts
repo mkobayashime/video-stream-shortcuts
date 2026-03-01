@@ -99,7 +99,7 @@ export default defineContentScript({
 	runAt: "document_end",
 	main() {
 		// Check if DAZN is enabled in setting
-		getConfig().then((config) => {
+		void getConfig().then((config) => {
 			if (config["sites-dazn"]) {
 				const handler = new daznHandler({ config });
 				handler.watch();

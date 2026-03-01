@@ -26,7 +26,7 @@ export default defineBackground(() => {
 		const initSitesAndKeysConfig = async (key: keyof StorageSync) => {
 			const enabled = await getConfig(key);
 			if (enabled === undefined) {
-				chrome.storage.sync.set({ [key]: true });
+				void chrome.storage.sync.set({ [key]: true });
 			}
 		};
 		void Promise.all(
@@ -37,7 +37,7 @@ export default defineBackground(() => {
 		const initSpeedsConfig = async (key: keyof StorageSync) => {
 			const speed = await getConfig(key);
 			if (speed === undefined) {
-				chrome.storage.sync.set({ [key]: 1 });
+				void chrome.storage.sync.set({ [key]: 1 });
 			}
 		};
 		void Promise.all(speedsConfigKeys.map(initSpeedsConfig));
@@ -46,13 +46,13 @@ export default defineBackground(() => {
 		void (async () => {
 			const seekSec = await getConfig("seek-sec");
 			if (seekSec === undefined) {
-				chrome.storage.sync.set({ "seek-sec": 10 });
+				void chrome.storage.sync.set({ "seek-sec": 10 });
 			}
 		})();
 
 		// Open options page when the extension is installed/updated
 		if (["install", "update"].includes(details.reason)) {
-			chrome.runtime.openOptionsPage();
+			void chrome.runtime.openOptionsPage();
 		}
 	});
 });
