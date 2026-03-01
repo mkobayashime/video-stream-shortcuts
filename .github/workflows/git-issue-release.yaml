@@ -1,0 +1,24 @@
+name: git-issue-release
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types: [released]
+
+jobs:
+  action:
+    runs-on: ubuntu-slim
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: read
+    steps:
+      - name: git-issue-release
+        uses: kouki-dan/git-issue-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          release-tag-pattern: ^v
+          release-label: "release"
