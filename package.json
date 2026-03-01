@@ -6,7 +6,7 @@
 	"type": "module",
 	"devDependencies": {
 		"@biomejs/biome": "2.4.4",
-		"@mkobayashime/shared-config": "3.0.0",
+		"@mkobayashime/shared-config": "4.0.0",
 		"@wxt-dev/auto-icons": "^1.1.0",
 		"eslint": "^9.0.0",
 		"eslint-config-flat-gitignore": "2.1.0",
