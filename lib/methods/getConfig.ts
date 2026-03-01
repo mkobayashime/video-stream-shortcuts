@@ -6,17 +6,17 @@ import type { StorageSync } from "../types/storage";
 async function getConfig(key: keyof StorageSync): Promise<unknown>;
 async function getConfig(key?: undefined): Promise<StorageSync>;
 async function getConfig(
-  /**
-   * Key of the config to get. `undefined` to get all the configs.
-   */
-  key?: string,
+	/**
+	 * Key of the config to get. `undefined` to get all the configs.
+	 */
+	key?: string,
 ): Promise<StorageSync> {
-  if (!key) {
-    return await chrome.storage.sync.get();
-  }
+	if (!key) {
+		return await chrome.storage.sync.get();
+	}
 
-  const values = await chrome.storage.sync.get([key]);
-  return values[key];
+	const values = await chrome.storage.sync.get([key]);
+	return values[key];
 }
 
 export { getConfig };
