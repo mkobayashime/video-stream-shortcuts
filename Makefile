@@ -1,38 +1,36 @@
 biome = bunx biome
-webpack = bunx webpack
+eslint = bunx eslint
 typecheck = bunx tsc --noEmit
+wxt = bunx wxt
 
-node_modules: PHONY
+deps: PHONY
 ifeq ($(CI), true)
 	bun install --frozen-lockfile
 else
 	bun install
 endif
 
-lint: node_modules PHONY
+lint: deps PHONY
 	$(biome) check .
+	$(eslint) .
 
-lint.fix: node_modules PHONY
-	$(biome) check --write .
+lint.fix: deps PHONY
+	$(biome) check --fix .
+	$(eslint) --fix .
 
-autofix: format lint.fix PHONY
-
-typecheck: node_modules PHONY
+typecheck: deps PHONY
 	$(typecheck)
 
-typecheck.watch: node_modules PHONY
+typecheck.watch: deps PHONY
 	$(typecheck) --watch
 
-dev: node_modules clear PHONY
-	WEBPACK_ENV=development $(webpack) --watch
+dev: deps PHONY
+	$(wxt)
 
-build: node_modules clear PHONY
-	WEBPACK_ENV=production $(webpack)
+build: deps PHONY
+	$(wxt) build
 
-clear: node_modules PHONY
-	bunx rimraf build
-
-version.update: PHONY
-	@./bin/version-update.sh
+zip: deps PHONY
+	$(wxt) zip
 
 PHONY:
