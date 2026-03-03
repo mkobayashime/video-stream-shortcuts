@@ -1,4 +1,4 @@
-import "../../assets/indicator.sass";
+import "../../assets/indicator.css";
 
 export namespace createIndicator {
 	export type Props = PropsWithoutWrapper & {
