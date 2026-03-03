@@ -10,7 +10,7 @@
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
 		"@wxt-dev/auto-icons": "1.1.1",
-		"@wxt-dev/module-react": "^1.1.5",
+		"@wxt-dev/module-react": "1.1.5",
 		"eslint": "9.39.3",
 		"eslint-config-flat-gitignore": "2.2.1",
 		"lefthook": "2.1.1",
@@ -24,12 +24,12 @@
 		"postinstall": "wxt prepare"
 	},
 	"dependencies": {
-		"@tailwindcss/vite": "^4.2.1",
-		"clsx": "^2.1.1",
-		"react": "^19.2.4",
-		"react-aria-components": "^1.15.1",
-		"react-dom": "^19.2.4",
-		"tailwind-merge": "^3.5.0",
-		"tailwindcss": "^4.2.1"
+		"@tailwindcss/vite": "4.2.1",
+		"clsx": "2.1.1",
+		"react": "19.2.4",
+		"react-aria-components": "1.15.1",
+		"react-dom": "19.2.4",
+		"tailwind-merge": "3.5.0",
+		"tailwindcss": "4.2.1"
 	}
 }
