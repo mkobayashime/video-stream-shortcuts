@@ -2,7 +2,7 @@ import { getConfig } from "../lib/methods/getConfig";
 import type { StorageSync } from "../lib/types/storage";
 
 export default defineBackground(() => {
-	browser.runtime.onInstalled.addListener((details) => {
+	browser.runtime.onInstalled.addListener(() => {
 		const sitesConfigKeys = [
 			"sites-dazn",
 			"sites-ms-stream",
@@ -49,10 +49,5 @@ export default defineBackground(() => {
 				void browser.storage.sync.set({ "seek-sec": 10 });
 			}
 		})();
-
-		// Open options page when the extension is installed/updated
-		if (["install", "update"].includes(details.reason)) {
-			void browser.runtime.openOptionsPage();
-		}
 	});
 });
