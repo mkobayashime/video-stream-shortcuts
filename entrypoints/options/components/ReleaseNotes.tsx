@@ -22,6 +22,9 @@ const kbdClass = "text-zinc-600 dark:text-zinc-400";
 export function ReleaseNotes() {
 	return (
 		<div className="space-y-4 text-sm">
+			<VersionEntry version="7.0.0">
+				<p>Support F1 TV</p>
+			</VersionEntry>
 			<VersionEntry version="6.1.0">
 				<p>Rewrite options page with React</p>
 			</VersionEntry>
