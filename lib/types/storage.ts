@@ -10,6 +10,7 @@ export type StorageSync = Readonly<
 		"keys-decimal": boolean;
 		"seek-sec": number;
 		"sites-dazn": boolean;
+		"sites-f1tv": boolean;
 		"sites-ms-stream": boolean;
 		"sites-openrec": boolean;
 		"sites-prime-video": boolean;
