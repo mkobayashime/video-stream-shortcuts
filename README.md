@@ -9,6 +9,7 @@ You can get it via [Chrome Web Store](https://chrome.google.com/webstore/detail/
 - Prime Video
 - TED
 - Microsoft Stream
+- F1 TV
 - DAZN
 - OPENREC
 
@@ -21,7 +22,7 @@ You can get it via [Chrome Web Store](https://chrome.google.com/webstore/detail/
 - **m** - Mute/Unmute
 - **Shift+,** / **<** - Decrease playback speed
 - **Shift+.** / **>** - Increase playback speed
-- **0–9** - Jump to percentages of the video, except for DAZN.
+- **0–9** - Jump to percentages of the video, except for F1 TV, DAZN, OPENREC
 
 ## Contribution
 

@@ -42,6 +42,11 @@ export function App() {
 							onChange={(v) => setSetting("sites-ms-stream", v)}
 						/>
 						<ToggleRow
+							description="F1 TV"
+							isSelected={settings["sites-f1tv"] ?? true}
+							onChange={(v) => setSetting("sites-f1tv", v)}
+						/>
+						<ToggleRow
 							description="OPENREC"
 							isSelected={settings["sites-openrec"] ?? true}
 							onChange={(v) => setSetting("sites-openrec", v)}
@@ -118,7 +123,7 @@ export function App() {
 									Jump to percentage of video
 									<br />
 									<span className="text-xs text-zinc-500 dark:text-zinc-400">
-										except for DAZN/OPENREC
+										except for F1 TV, DAZN, OPENREC
 									</span>
 								</>
 							}
