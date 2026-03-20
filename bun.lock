@@ -11,7 +11,7 @@
         "@types/react": "19.2.14",
         "@types/react-dom": "19.2.3",
         "@wxt-dev/auto-icons": "1.1.1",
-        "@wxt-dev/module-react": "1.1.5",
+        "@wxt-dev/module-react": "1.2.1",
         "clsx": "2.1.1",
         "eslint": "10.0.3",
         "eslint-config-flat-gitignore": "2.2.1",
@@ -660,7 +660,7 @@
 
     "@wxt-dev/browser": ["@wxt-dev/browser@0.1.37", "", { "dependencies": { "@types/filesystem": "*", "@types/har-format": "*" } }, "sha512-I32XWCNRy2W6UgbaVXz8BHGBGtm8urGRRBrcNLagUBXTrBi7wCE6zWePUvvK+nUl7qUCZ7iQ1ufdP0c1DEWisw=="],
 
-    "@wxt-dev/module-react": ["@wxt-dev/module-react@1.1.5", "", { "dependencies": { "@vitejs/plugin-react": "^4.4.1 || ^5.0.0" }, "peerDependencies": { "wxt": ">=0.19.16" } }, "sha512-KgsUrsgH5rBT8MwiipnDEOHBXmLvTIdFICrI7KjngqSf9DpVRn92HsKmToxY0AYpkP19hHWta2oNYFTzmmm++g=="],
+    "@wxt-dev/module-react": ["@wxt-dev/module-react@1.2.1", "", { "dependencies": { "@vitejs/plugin-react": "^4.4.1 || ^5.0.0" }, "peerDependencies": { "vite": "^5.4.19 || ^6.3.4 || ^7.0.0 || ^8.0.0-0", "wxt": ">=0.19.16" } }, "sha512-NkXhXP1KqbTmKuQ7LwESFUnQDxQRiHw98ZQ6cXKuulRvyxtyCfc6gOqbKMHPP9bp497UVHaozr3ZQj1lvcPPTQ=="],
 
     "@wxt-dev/storage": ["@wxt-dev/storage@1.2.8", "", { "dependencies": { "@wxt-dev/browser": "^0.1.37", "async-mutex": "^0.5.0", "dequal": "^2.0.3" } }, "sha512-GWCFKgF5+d7eslOxUDFC70ypA9njupmJb1nQM8uZoX0J3sWT2BO5xJLzb1sYahWAfID9p2BMtnUBN1lkWxPsbQ=="],
 
