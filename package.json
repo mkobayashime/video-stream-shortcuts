@@ -22,7 +22,7 @@
 		"tailwind-merge": "3.5.0",
 		"tailwindcss": "4.2.1",
 		"typescript": "5.9.3",
-		"typescript-eslint": "8.58.2",
+		"typescript-eslint": "8.59.1",
 		"wxt": "0.20.18"
 	},
 	"scripts": {
