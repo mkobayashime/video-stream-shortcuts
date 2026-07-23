@@ -64,4 +64,4 @@ const cache = (media: HTMLVideoElement) => {
 	}
 };
 
-export { seek, decimalSeek };
+export { decimalSeek, seek };

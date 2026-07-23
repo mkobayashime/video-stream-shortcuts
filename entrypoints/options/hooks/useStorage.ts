@@ -10,7 +10,7 @@ export function useStorage() {
 	useEffect(() => {
 		void browser.storage.sync
 			.get()
-			.then((v) => setState({ settings: v as StorageSync, isLoading: false }));
+			.then((v) => setState({ settings: v, isLoading: false }));
 	}, []);
 
 	const setSetting = useCallback(
