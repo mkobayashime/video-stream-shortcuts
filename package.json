@@ -6,7 +6,6 @@
 	"type": "module",
 	"scripts": {
 		"preinstall": "npx only-allow bun",
-		"prepare": "lefthook install",
 		"postinstall": "wxt prepare"
 	},
 	"devDependencies": {
@@ -16,7 +15,6 @@
 		"@wxt-dev/auto-icons": "1.1.1",
 		"@wxt-dev/module-react": "1.2.2",
 		"clsx": "2.1.1",
-		"lefthook": "2.1.10",
 		"oxfmt": "0.67.0",
 		"oxlint": "1.82.0",
 		"oxlint-tsgolint": "7.0.2001",
