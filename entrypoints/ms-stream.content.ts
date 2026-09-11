@@ -61,9 +61,7 @@ class MsStreamHandler {
 	}
 
 	callIndicatorCreator(props: createIndicator.PropsWithoutWrapper) {
-		const wrapper = document.getElementsByTagName("video")[0].parentNode as
-			| HTMLElement
-			| undefined;
+		const wrapper = document.getElementsByTagName("video")[0].parentNode as HTMLElement | undefined;
 		if (!wrapper) return;
 
 		wrapper.style.position = "absolute";
@@ -128,9 +126,8 @@ class MsStreamHandler {
 						if (this.config["keys-f"]) {
 							// Use default fullscreen button on the page instead of /methods/toggleFullscreen.js
 							// in order not to make the video controls invisible in fullscreen mode
-							const fullscreenControlElement = document.getElementsByClassName(
-								"vjs-fullscreen-control",
-							)[0];
+							const fullscreenControlElement =
+								document.getElementsByClassName("vjs-fullscreen-control")[0];
 
 							if (fullscreenControlElement instanceof HTMLElement) {
 								fullscreenControlElement.click();
@@ -139,10 +136,7 @@ class MsStreamHandler {
 						break;
 					case "m":
 						if (this.config["keys-m"]) {
-							this.preVolume = toggleMute(
-								this.media,
-								this.preVolume || undefined,
-							);
+							this.preVolume = toggleMute(this.media, this.preVolume || undefined);
 							if (this.media.volume !== 0) {
 								this.callIndicatorCreator({
 									type: "text",

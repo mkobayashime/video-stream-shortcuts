@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+
 import type { StorageSync } from "../../../lib/types/storage";
 
 export function useStorage() {
@@ -8,21 +9,16 @@ export function useStorage() {
 	}>({ settings: {}, isLoading: true });
 
 	useEffect(() => {
-		void browser.storage.sync
-			.get()
-			.then((v) => setState({ settings: v, isLoading: false }));
+		void browser.storage.sync.get().then((v) => setState({ settings: v, isLoading: false }));
 	}, []);
 
-	const setSetting = useCallback(
-		<K extends keyof StorageSync>(key: K, value: StorageSync[K]) => {
-			setState((prev) => ({
-				...prev,
-				settings: { ...prev.settings, [key]: value },
-			}));
-			void browser.storage.sync.set({ [key]: value });
-		},
-		[],
-	);
+	const setSetting = useCallback(<K extends keyof StorageSync>(key: K, value: StorageSync[K]) => {
+		setState((prev) => ({
+			...prev,
+			settings: { ...prev.settings, [key]: value },
+		}));
+		void browser.storage.sync.set({ [key]: value });
+	}, []);
 
 	return { ...state, setSetting };
 }

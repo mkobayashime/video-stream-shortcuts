@@ -11,9 +11,7 @@ import type { StorageSync } from "../lib/types/storage";
 const getVideo = (config: StorageSync) => {
 	const promise: Promise<HTMLVideoElement> = new Promise((resolve) => {
 		const interval = window.setInterval(() => {
-			const media = document.getElementsByTagName("video")[0] as
-				| HTMLVideoElement
-				| undefined;
+			const media = document.getElementsByTagName("video")[0] as HTMLVideoElement | undefined;
 			if (media) {
 				window.clearInterval(interval);
 				resolve(media);
@@ -127,9 +125,7 @@ const setShortcuts = (media: HTMLVideoElement, config: StorageSync) => {
 
 // Page specific wrapper of lib/methods/createIndicator.ts
 const callIndicatorCreator = (props: createIndicator.PropsWithoutWrapper) => {
-	const wrapper = document.getElementsByTagName("video")[0].parentNode as
-		| HTMLElement
-		| undefined;
+	const wrapper = document.getElementsByTagName("video")[0].parentNode as HTMLElement | undefined;
 
 	if (!wrapper) return;
 

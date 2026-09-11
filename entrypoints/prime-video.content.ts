@@ -10,9 +10,7 @@ import type { StorageSync } from "../lib/types/storage";
 const getVideo = (config: StorageSync) => {
 	const promise: Promise<HTMLVideoElement> = new Promise((resolve) => {
 		const interval = window.setInterval(() => {
-			const media = document.querySelector<HTMLVideoElement>(
-				".webPlayerElement video",
-			);
+			const media = document.querySelector<HTMLVideoElement>(".webPlayerElement video");
 			if (media) {
 				window.clearInterval(interval);
 				resolve(media);

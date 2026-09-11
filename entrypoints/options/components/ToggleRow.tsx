@@ -7,12 +7,7 @@ interface ToggleRowProps {
 	onChange: (value: boolean) => void;
 }
 
-export function ToggleRow({
-	keys,
-	description,
-	isSelected,
-	onChange,
-}: ToggleRowProps) {
+export function ToggleRow({ keys, description, isSelected, onChange }: ToggleRowProps) {
 	return (
 		<Switch
 			isSelected={isSelected}
