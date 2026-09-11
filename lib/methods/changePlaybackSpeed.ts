@@ -1,10 +1,7 @@
 /**
  * Returns playback rate after changed
  */
-const changePlaybackSpeed = (
-	media: HTMLVideoElement,
-	direction: "increase" | "decrease",
-) => {
+const changePlaybackSpeed = (media: HTMLVideoElement, direction: "increase" | "decrease") => {
 	const curSpeed = media.playbackRate;
 	if (direction === "increase") {
 		if (curSpeed !== 2) {

@@ -12,36 +12,28 @@ export default defineContentScript({
 					switch (e.key) {
 						case "k": {
 							if (config["keys-k"]) {
-								const button = document.querySelector(
-									"button[class*='-playbacktogglebutton']",
-								);
+								const button = document.querySelector("button[class*='-playbacktogglebutton']");
 								if (button instanceof HTMLElement) button.click();
 							}
 							break;
 						}
 						case "j": {
 							if (config["keys-j"]) {
-								const button = document.querySelector(
-									"button[class*='-rewindbutton']",
-								);
+								const button = document.querySelector("button[class*='-rewindbutton']");
 								if (button instanceof HTMLElement) button.click();
 							}
 							break;
 						}
 						case "l": {
 							if (config["keys-l"]) {
-								const button = document.querySelector(
-									"button[class*='-forwardbutton']",
-								);
+								const button = document.querySelector("button[class*='-forwardbutton']");
 								if (button instanceof HTMLElement) button.click();
 							}
 							break;
 						}
 						case "m": {
 							if (config["keys-m"]) {
-								const button = document.querySelector(
-									"button[class*='-volumetogglebutton']",
-								);
+								const button = document.querySelector("button[class*='-volumetogglebutton']");
 								if (button instanceof HTMLElement) button.click();
 							}
 							break;

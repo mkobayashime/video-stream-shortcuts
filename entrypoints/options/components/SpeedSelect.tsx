@@ -1,11 +1,4 @@
-import {
-	Button,
-	ListBox,
-	ListBoxItem,
-	Popover,
-	Select,
-	SelectValue,
-} from "react-aria-components";
+import { Button, ListBox, ListBoxItem, Popover, Select, SelectValue } from "react-aria-components";
 
 const SPEED_OPTIONS = [0.5, 0.75, 1, 1.25, 1.5, 1.75, 2];
 

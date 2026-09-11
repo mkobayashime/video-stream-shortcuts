@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+
 import { Kbd } from "./Kbd";
 
 interface VersionEntryProps {
@@ -10,9 +11,7 @@ function VersionEntry({ version, children }: VersionEntryProps) {
 	return (
 		<div className="space-y-2">
 			<h3 className="text-base text-zinc-900 dark:text-zinc-100">{version}</h3>
-			<div className="space-y-1 text-zinc-600 dark:text-zinc-400">
-				{children}
-			</div>
+			<div className="space-y-1 text-zinc-600 dark:text-zinc-400">{children}</div>
 		</div>
 	);
 }
@@ -49,8 +48,7 @@ export function ReleaseNotes() {
 			</VersionEntry>
 			<VersionEntry version="3.9.0">
 				<p>
-					Seek with <Kbd className={kbdClass}>0</Kbd>–
-					<Kbd className={kbdClass}>9</Kbd> keys
+					Seek with <Kbd className={kbdClass}>0</Kbd>–<Kbd className={kbdClass}>9</Kbd> keys
 				</p>
 				<p>Improve stability in Prime Video</p>
 			</VersionEntry>

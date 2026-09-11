@@ -29,9 +29,7 @@ export default defineBackground(() => {
 				void browser.storage.sync.set({ [key]: true });
 			}
 		};
-		void Promise.all(
-			[...sitesConfigKeys, ...keysConfigKeys].map(initSitesAndKeysConfig),
-		);
+		void Promise.all([...sitesConfigKeys, ...keysConfigKeys].map(initSitesAndKeysConfig));
 
 		// Set default playback speeds to 1 when no config found
 		const initSpeedsConfig = async (key: keyof StorageSync) => {

@@ -1,5 +1,6 @@
 import tailwind from "@tailwindcss/vite";
 import { defineConfig } from "wxt";
+
 import packageJSON from "./package.json";
 
 // See https://wxt.dev/api/config.html
